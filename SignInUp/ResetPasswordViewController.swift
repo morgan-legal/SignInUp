@@ -10,6 +10,8 @@ import UIKit
 
 class ResetPasswordViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,16 +22,43 @@ class ResetPasswordViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func resetPasswordButtonPressed(sender: UIButton)
+    {
+        // convert the email string to lower case
+        let emailToLowerCase = self.emailTextField.text?.lowercaseString
+        
+        // remove any whitespaces before and after the email address
+        let emailClean = emailToLowerCase!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        PFUser.requestPasswordResetForEmailInBackground( emailClean ) {
+            (success, error) -> Void in
+            
+            if error == nil
+            {
+                self.showAlert("Success", message: "Check your emails!")
+            }
+            else
+            {
+                self.showAlert("Error", message: "Cannot complete request")
+            }
+        
+        }
     }
-    */
+
+    // MARK: Helper functions
+    func showAlert (title: String, message: String)
+    {
+        let alert = UIAlertController(title: title,
+            message: message,
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // add the button "Ok" to the alert
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        
+        // Display alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 
 }

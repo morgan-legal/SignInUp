@@ -7,14 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5847EEA61BDE338A007AF2FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847EEA51BDE338A007AF2FD /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */; };
-		58924DF11BD8E4FE001A9FF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF01BD8E4FE001A9FF6 /* ViewController.swift */; };
+		58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */; };
 		58924DF41BD8E4FE001A9FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58924DF21BD8E4FE001A9FF6 /* Main.storyboard */; };
 		58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF51BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld */; };
 		58924DF91BD8E4FE001A9FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58924DF81BD8E4FE001A9FF6 /* Assets.xcassets */; };
 		58924DFC1BD8E4FE001A9FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58924DFA1BD8E4FE001A9FF6 /* LaunchScreen.storyboard */; };
 		58924E071BD8E4FE001A9FF6 /* SignInUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E061BD8E4FE001A9FF6 /* SignInUpTests.swift */; };
 		58924E121BD8E4FE001A9FF6 /* SignInUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E111BD8E4FE001A9FF6 /* SignInUpUITests.swift */; };
+		58924E221BD8E5F4001A9FF6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E201BD8E5F4001A9FF6 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		58924E231BD8E5F4001A9FF6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E211BD8E5F4001A9FF6 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		58924E251BD8E60B001A9FF6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E241BD8E60B001A9FF6 /* AudioToolbox.framework */; };
+		58924E271BD8E611001A9FF6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E261BD8E611001A9FF6 /* CFNetwork.framework */; };
+		58924E291BD8E61A001A9FF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E281BD8E61A001A9FF6 /* CoreGraphics.framework */; };
+		58924E2B1BD8E621001A9FF6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E2A1BD8E621001A9FF6 /* CoreLocation.framework */; };
+		58924E2D1BD8E62D001A9FF6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E2C1BD8E62D001A9FF6 /* QuartzCore.framework */; };
+		58924E2F1BD8E635001A9FF6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E2E1BD8E635001A9FF6 /* Security.framework */; };
+		58924E311BD8E63C001A9FF6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E301BD8E63C001A9FF6 /* StoreKit.framework */; };
+		58924E331BD8E647001A9FF6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E321BD8E647001A9FF6 /* SystemConfiguration.framework */; };
+		58924E351BD8E650001A9FF6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E341BD8E650001A9FF6 /* libz.tbd */; };
+		58924E371BD8E65B001A9FF6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E361BD8E65B001A9FF6 /* libsqlite3.tbd */; };
+		58924E391BD8E6B8001A9FF6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E381BD8E6B8001A9FF6 /* Accounts.framework */; };
+		58924E3B1BD8E6BE001A9FF6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E3A1BD8E6BE001A9FF6 /* Social.framework */; };
+		58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E441BD8EADA001A9FF6 /* CreateAccountViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E461BD902B5001A9FF6 /* LogInViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E481BD902CD001A9FF6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C2B81BD9296A00793645 /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5847EEA51BDE338A007AF2FD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		58924DEB1BD8E4FE001A9FF6 /* SignInUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		58924DF01BD8E4FE001A9FF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		58924DF31BD8E4FE001A9FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58924DF61BD8E4FE001A9FF6 /* SignInUp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SignInUp.xcdatamodel; sourceTree = "<group>"; };
 		58924DF81BD8E4FE001A9FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +70,26 @@
 		58924E0D1BD8E4FE001A9FF6 /* SignInUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignInUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58924E111BD8E4FE001A9FF6 /* SignInUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUpUITests.swift; sourceTree = "<group>"; };
 		58924E131BD8E4FE001A9FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58924E201BD8E5F4001A9FF6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		58924E211BD8E5F4001A9FF6 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		58924E241BD8E60B001A9FF6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		58924E261BD8E611001A9FF6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		58924E281BD8E61A001A9FF6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		58924E2A1BD8E621001A9FF6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		58924E2C1BD8E62D001A9FF6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		58924E2E1BD8E635001A9FF6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58924E301BD8E63C001A9FF6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		58924E321BD8E647001A9FF6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58924E341BD8E650001A9FF6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		58924E361BD8E65B001A9FF6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		58924E381BD8E6B8001A9FF6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		58924E3A1BD8E6BE001A9FF6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		58924E3C1BD8E89C001A9FF6 /* SignInUp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SignInUp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		58924E441BD8EADA001A9FF6 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		58924E461BD902B5001A9FF6 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		58924E481BD902CD001A9FF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		58A7C2B81BD9296A00793645 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +97,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58924E3B1BD8E6BE001A9FF6 /* Social.framework in Frameworks */,
+				58924E391BD8E6B8001A9FF6 /* Accounts.framework in Frameworks */,
+				58924E371BD8E65B001A9FF6 /* libsqlite3.tbd in Frameworks */,
+				58924E351BD8E650001A9FF6 /* libz.tbd in Frameworks */,
+				58924E331BD8E647001A9FF6 /* SystemConfiguration.framework in Frameworks */,
+				58924E311BD8E63C001A9FF6 /* StoreKit.framework in Frameworks */,
+				58924E2F1BD8E635001A9FF6 /* Security.framework in Frameworks */,
+				58924E2D1BD8E62D001A9FF6 /* QuartzCore.framework in Frameworks */,
+				58924E2B1BD8E621001A9FF6 /* CoreLocation.framework in Frameworks */,
+				58924E291BD8E61A001A9FF6 /* CoreGraphics.framework in Frameworks */,
+				58924E271BD8E611001A9FF6 /* CFNetwork.framework in Frameworks */,
+				58924E251BD8E60B001A9FF6 /* AudioToolbox.framework in Frameworks */,
+				58924E231BD8E5F4001A9FF6 /* Parse.framework in Frameworks */,
+				58924E221BD8E5F4001A9FF6 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +134,7 @@
 		58924DE21BD8E4FE001A9FF6 = {
 			isa = PBXGroup;
 			children = (
+				58924E1F1BD8E52B001A9FF6 /* Frameworks */,
 				58924DED1BD8E4FE001A9FF6 /* SignInUp */,
 				58924E051BD8E4FE001A9FF6 /* SignInUpTests */,
 				58924E101BD8E4FE001A9FF6 /* SignInUpUITests */,
@@ -99,13 +155,11 @@
 		58924DED1BD8E4FE001A9FF6 /* SignInUp */ = {
 			isa = PBXGroup;
 			children = (
+				58924E411BD8E973001A9FF6 /* View Controllers */,
+				58924E401BD8E96C001A9FF6 /* Data */,
 				58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */,
-				58924DF01BD8E4FE001A9FF6 /* ViewController.swift */,
 				58924DF21BD8E4FE001A9FF6 /* Main.storyboard */,
-				58924DF81BD8E4FE001A9FF6 /* Assets.xcassets */,
-				58924DFA1BD8E4FE001A9FF6 /* LaunchScreen.storyboard */,
-				58924DFD1BD8E4FE001A9FF6 /* Info.plist */,
-				58924DF51BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld */,
+				58924E3F1BD8E8BA001A9FF6 /* Supporting Files */,
 			);
 			path = SignInUp;
 			sourceTree = "<group>";
@@ -126,6 +180,60 @@
 				58924E131BD8E4FE001A9FF6 /* Info.plist */,
 			);
 			path = SignInUpUITests;
+			sourceTree = "<group>";
+		};
+		58924E1F1BD8E52B001A9FF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58924E3A1BD8E6BE001A9FF6 /* Social.framework */,
+				58924E381BD8E6B8001A9FF6 /* Accounts.framework */,
+				58924E361BD8E65B001A9FF6 /* libsqlite3.tbd */,
+				58924E341BD8E650001A9FF6 /* libz.tbd */,
+				58924E321BD8E647001A9FF6 /* SystemConfiguration.framework */,
+				58924E301BD8E63C001A9FF6 /* StoreKit.framework */,
+				58924E2E1BD8E635001A9FF6 /* Security.framework */,
+				58924E2C1BD8E62D001A9FF6 /* QuartzCore.framework */,
+				58924E2A1BD8E621001A9FF6 /* CoreLocation.framework */,
+				58924E281BD8E61A001A9FF6 /* CoreGraphics.framework */,
+				58924E261BD8E611001A9FF6 /* CFNetwork.framework */,
+				58924E241BD8E60B001A9FF6 /* AudioToolbox.framework */,
+				58924E201BD8E5F4001A9FF6 /* Bolts.framework */,
+				58924E211BD8E5F4001A9FF6 /* Parse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58924E3F1BD8E8BA001A9FF6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				58924DF81BD8E4FE001A9FF6 /* Assets.xcassets */,
+				58924DFA1BD8E4FE001A9FF6 /* LaunchScreen.storyboard */,
+				58924E3C1BD8E89C001A9FF6 /* SignInUp-Bridging-Header.h */,
+				58924DFD1BD8E4FE001A9FF6 /* Info.plist */,
+				58924DF51BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58924E401BD8E96C001A9FF6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5847EEA51BDE338A007AF2FD /* User.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		58924E411BD8E973001A9FF6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */,
+				58924E461BD902B5001A9FF6 /* LogInViewController.swift */,
+				58924E441BD8EADA001A9FF6 /* CreateAccountViewController.swift */,
+				58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */,
+				58924E481BD902CD001A9FF6 /* ProfileViewController.swift */,
+				58A7C2B81BD9296A00793645 /* MapViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +298,7 @@
 		58924DE31BD8E4FE001A9FF6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Morgan Le Gal";
 				TargetAttributes = {
@@ -261,9 +370,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58924DF11BD8E4FE001A9FF6 /* ViewController.swift in Sources */,
+				58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */,
+				58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */,
 				58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */,
 				58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */,
+				58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */,
+				58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */,
+				58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */,
+				5847EEA61BDE338A007AF2FD /* User.swift in Sources */,
+				58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +520,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SignInUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MLG.SignInUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SignInUp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -416,10 +538,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SignInUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MLG.SignInUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SignInUp-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -490,6 +618,7 @@
 				58924E181BD8E4FE001A9FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58924E191BD8E4FE001A9FF6 /* Build configuration list for PBXNativeTarget "SignInUpTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +627,7 @@
 				58924E1B1BD8E4FE001A9FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58924E1C1BD8E4FE001A9FF6 /* Build configuration list for PBXNativeTarget "SignInUpUITests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +636,7 @@
 				58924E1E1BD8E4FE001A9FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

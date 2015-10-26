@@ -10,10 +10,21 @@ import UIKit
 
 class MapViewController: UIViewController {
 
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //navigationItem.titleView = UIImageView(image: UIImage(named: "nav-header"))
+        
+        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "profile-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToProfile:")
+        navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +32,10 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func goToProfile(button: UIBarButtonItem){
+        
+        let profileVC = self.storyboard!.instantiateViewControllerWithIdentifier("Profile")
+        let navController = UINavigationController(rootViewController: profileVC) 
+        self.presentViewController(navController, animated:true, completion: nil)
     }
-    */
-
 }

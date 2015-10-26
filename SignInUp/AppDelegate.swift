@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +18,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // [Optional] Power your app with Local Datastore. For more info, go to
+        // https://parse.com/docs/ios_guide#localdatastore/iOS
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("EQUUxHR9c9qFRxq47z7JPUuo67Ei6ln9OTADniTh",
+            clientKey: "gd73QlnbZOeblBJ2QbQxdHrJxZDCgh9gqXStLA2Z")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController: UIViewController
+        let navController: UINavigationController
+        
+        if currentUser() != nil
+        {
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("Map") as UIViewController
+            navController = UINavigationController(rootViewController: initialViewController)
+
+       }
+        else
+        {
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("Home") as UIViewController
+            navController = UINavigationController(rootViewController: initialViewController)
+        }
+        
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
