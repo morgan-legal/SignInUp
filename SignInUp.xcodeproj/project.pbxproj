@@ -35,6 +35,9 @@
 		58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E481BD902CD001A9FF6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C2B81BD9296A00793645 /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58B375F81BDE5FA60087A620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B375F71BDE5FA60087A620 /* MapKit.framework */; };
+		58B375FA1BDE74140087A620 /* PlaceVisited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B375F91BDE74140087A620 /* PlaceVisited.swift */; settings = {ASSET_TAGS = (); }; };
+		58B375FC1BDE74200087A620 /* PlaceToVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B375FB1BDE74200087A620 /* PlaceToVisit.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		58924E481BD902CD001A9FF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		58A7C2B81BD9296A00793645 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		58B375F71BDE5FA60087A620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		58B375F91BDE74140087A620 /* PlaceVisited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceVisited.swift; sourceTree = "<group>"; };
+		58B375FB1BDE74200087A620 /* PlaceToVisit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceToVisit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B375F81BDE5FA60087A620 /* MapKit.framework in Frameworks */,
 				58924E3B1BD8E6BE001A9FF6 /* Social.framework in Frameworks */,
 				58924E391BD8E6B8001A9FF6 /* Accounts.framework in Frameworks */,
 				58924E371BD8E65B001A9FF6 /* libsqlite3.tbd in Frameworks */,
@@ -185,6 +192,7 @@
 		58924E1F1BD8E52B001A9FF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58B375F71BDE5FA60087A620 /* MapKit.framework */,
 				58924E3A1BD8E6BE001A9FF6 /* Social.framework */,
 				58924E381BD8E6B8001A9FF6 /* Accounts.framework */,
 				58924E361BD8E65B001A9FF6 /* libsqlite3.tbd */,
@@ -219,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				5847EEA51BDE338A007AF2FD /* User.swift */,
+				58B375F91BDE74140087A620 /* PlaceVisited.swift */,
+				58B375FB1BDE74200087A620 /* PlaceToVisit.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -373,11 +383,13 @@
 				58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */,
 				58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */,
 				58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */,
+				58B375FC1BDE74200087A620 /* PlaceToVisit.swift in Sources */,
 				58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */,
 				58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */,
 				58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */,
 				58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */,
 				5847EEA61BDE338A007AF2FD /* User.swift in Sources */,
+				58B375FA1BDE74140087A620 /* PlaceVisited.swift in Sources */,
 				58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

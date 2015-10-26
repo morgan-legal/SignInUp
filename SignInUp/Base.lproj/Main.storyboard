@@ -445,6 +445,9 @@
                                 <state key="normal" title="Add Green Pin">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addGreenPinButtonPressed:" destination="SOT-Gp-Q0y" eventType="touchUpInside" id="F7j-ED-36b"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8B-No-jlc">
                                 <rect key="frame" x="462" y="540" width="118" height="40"/>
@@ -457,19 +460,32 @@
                                 <state key="normal" title="Add Red Pin">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addRedPinButtonPressed:" destination="SOT-Gp-Q0y" eventType="touchUpInside" id="JPE-bH-2pl"/>
+                                </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hTh-Bx-kq6">
+                                <rect key="frame" x="20" y="72" width="560" height="460"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.43137254901960786" green="0.69803921568627447" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Q7S-F8-liu" firstAttribute="top" secondItem="bGz-vE-1j3" secondAttribute="bottom" constant="20" id="0JA-V1-PRM"/>
                             <constraint firstAttribute="leadingMargin" secondItem="bGz-vE-1j3" secondAttribute="leading" id="1IJ-gx-PB4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hTh-Bx-kq6" secondAttribute="trailing" id="90B-ET-M80"/>
+                            <constraint firstItem="hTh-Bx-kq6" firstAttribute="top" secondItem="fyf-G8-YKS" secondAttribute="bottom" constant="8" id="9Ke-es-Kpt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="r8B-No-jlc" secondAttribute="trailing" id="Eoq-Cs-U3q"/>
+                            <constraint firstItem="bGz-vE-1j3" firstAttribute="top" secondItem="hTh-Bx-kq6" secondAttribute="bottom" constant="8" id="khO-4y-KbF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="hTh-Bx-kq6" secondAttribute="leading" id="s8b-le-idQ"/>
                             <constraint firstItem="Q7S-F8-liu" firstAttribute="top" secondItem="r8B-No-jlc" secondAttribute="bottom" constant="20" id="w5z-1I-E1K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v6y-r9-TSA">
                         <barButtonItem key="leftBarButtonItem" title="Profile" id="a21-CJ-Eok"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="hTh-Bx-kq6" id="NIa-NQ-h8b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFO-tv-o4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
