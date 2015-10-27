@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var profilePictureImage: UIImageView!
     
+    @IBOutlet weak var placesVisitedCollectionView: UICollectionView!
+    @IBOutlet weak var placesToVisitCollectionView: UICollectionView!
+
+    var pins: [Pin] = []
+    var placesVisited: [Pin] = []
+    var placesToVisit: [Pin] = []
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,8 +28,18 @@ class ProfileViewController: UIViewController {
         
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "map-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToMap:")
         navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
+        
+        getAllPins({
+            pins in
+            self.pins = pins
+        })
+        
+        placesVisitedCollectionView.reloadData()
     }
     
+    @IBAction func reloadDataButtonPressed(sender: UIButton) {
+        placesVisitedCollectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +49,13 @@ class ProfileViewController: UIViewController {
         self.emailLabel.text = currentUser()?.email
         self.firstNameLabel.text = currentUser()?.firstName
         self.lastNameLabel.text = currentUser()?.lastName
+        
+        
+        placesToVisitCollectionView.delegate = self
+        placesVisitedCollectionView.delegate = self
+        
+        placesToVisitCollectionView.dataSource = self
+        placesVisitedCollectionView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,4 +83,36 @@ class ProfileViewController: UIViewController {
         })
         
     }
+    
+    // MARK: - UICollectionViewDataSource
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pins.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell: PinCell = collectionView.dequeueReusableCellWithReuseIdentifier("placesVisitedCollectionViewCell", forIndexPath: indexPath) as! PinCell
+        
+        cell.cityLabel.text = pins[indexPath.row].city
+        
+        return cell
+    }
+    
+    
+    // MARK: - UICollectionViewDelegate
+    
+  /*  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let thisItem = feedArray[indexPath.row] as! FeedItem
+        
+        var filterVC = FilterViewController()
+        filterVC.thisFeedItem = thisItem
+        
+        self.navigationController?.pushViewController(filterVC, animated: false)
+    }*/
+    
 }
