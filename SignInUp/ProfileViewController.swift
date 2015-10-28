@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
@@ -29,16 +29,23 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "map-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToMap:")
         navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
         
-        getAllPins({
+        /*getAllPins({
             pins in
             self.pins = pins
+            self.placesVisitedCollectionView.reloadData()
+        })*/
+        
+        fetchPlacesToVisit({
+            placesVisited in
+            self.placesVisited = placesVisited
+            self.placesVisitedCollectionView.reloadData()
         })
         
-        placesVisitedCollectionView.reloadData()
-    }
-    
-    @IBAction func reloadDataButtonPressed(sender: UIButton) {
-        placesVisitedCollectionView.reloadData()
+        fetchPlacesVisited({
+            placesToVisit in
+            self.placesToVisit = placesToVisit
+            self.placesToVisitCollectionView.reloadData()
+        })
     }
     
     override func viewDidLoad() {
@@ -56,6 +63,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         placesToVisitCollectionView.dataSource = self
         placesVisitedCollectionView.dataSource = self
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,28 +99,41 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pins.count
+        if collectionView == self.placesToVisitCollectionView {
+            return self.placesToVisit.count
+        }
+        else {
+            return self.placesVisited.count
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell: PinCell = collectionView.dequeueReusableCellWithReuseIdentifier("placesVisitedCollectionViewCell", forIndexPath: indexPath) as! PinCell
-        
-        cell.cityLabel.text = pins[indexPath.row].city
-        
-        return cell
+        if collectionView == self.placesToVisitCollectionView {
+            let cell: PinCell = collectionView.dequeueReusableCellWithReuseIdentifier("placesToVisitCollectionViewCell", forIndexPath: indexPath) as! PinCell
+            cell.placeToVisitLabel.text = placesToVisit[indexPath.row].city
+            cell.layoutIfNeeded()
+            return cell
+        }
+        else {
+            let cell: PinCell = collectionView.dequeueReusableCellWithReuseIdentifier("placesVisitedCollectionViewCell", forIndexPath: indexPath) as! PinCell
+            cell.placeVisitedLabel.text = placesVisited[indexPath.row].city
+            cell.layoutIfNeeded()
+            return cell
+        }
     }
     
+    // MARK: -UICollectionViewFlowLayoutDelegate
     
-    // MARK: - UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+    }
     
-  /*  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let thisItem = feedArray[indexPath.row] as! FeedItem
-        
-        var filterVC = FilterViewController()
-        filterVC.thisFeedItem = thisItem
-        
-        self.navigationController?.pushViewController(filterVC, animated: false)
-    }*/
-    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if collectionView == self.placesToVisitCollectionView {
+            return CGSize(width: 120, height: self.placesToVisitCollectionView.bounds.height - 20.0)
+        }
+        else {
+            return CGSize(width: 120, height: self.placesVisitedCollectionView.bounds.height - 20.0)
+        }
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
+// Google API Key : AIzaSyDkQnuuHQn2_gS5dbKyUHsVpQKfHJ3et70
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
 
@@ -19,8 +19,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let locationManager = CLLocationManager()
 
     var isVisited: Bool!
-    var pins: [Pin] = []
     
+    var allPlaces: [Pin] = []
+    var placesToVisit: [Pin] = []
+    var placesVisited: [Pin] = []
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,12 +30,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "profile-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToProfile:")
         navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
         
-        getAllPins({
+       /* getAllPins({
             pins in
             self.pins = pins
             self.displayAllPins()
         })
+        */
         
+        fetchPlacesToVisit({
+            placesVisited in
+            self.placesVisited = placesVisited
+            //self.placesVisitedCollectionView.reloadData()
+            self.displayPinsOnMap(self.placesVisited)
+        })
+        
+        fetchPlacesVisited({
+            placesToVisit in
+            self.placesToVisit = placesToVisit
+            //self.placesToVisitCollectionView.reloadData()
+            self.displayPinsOnMap(self.placesToVisit)
+        })
         
     }
     
@@ -103,6 +119,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func createSearchForPlace(cityName: String)
     {
+        let pointAnnotation = MKPointAnnotation()
         let localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = cityName
         let localSearch = MKLocalSearch(request: localSearchRequest)
@@ -115,19 +132,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
-            
-            let pointAnnotation = MKPointAnnotation()
             pointAnnotation.title = cityName
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
-            
-            let coordinates = PFGeoPoint(latitude: pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
-            
-            let country = self.getCountryNameFromCoordinates(pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
-            savePin( Pin(userId: (currentUser()?.id)!, isVisited: self.isVisited, city: cityName, country: country, coordinates: coordinates) )
-            
-            self.mapView.centerCoordinate = pointAnnotation.coordinate
-            self.mapView.addAnnotation(pointAnnotation)
         }
+        let coordinates = PFGeoPoint(latitude: pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
+        
+        let country = self.getCountryNameFromCoordinates(pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
+        savePin( Pin(userId: (currentUser()?.id)!, isVisited: self.isVisited, city: cityName, country: country, coordinates: coordinates) )
+        
+        self.mapView.centerCoordinate = pointAnnotation.coordinate
+        self.mapView.addAnnotation(pointAnnotation)
     }
     
     
@@ -146,58 +160,47 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("Errors: " + error.localizedDescription)
     }
     
-    func displayAllPins() {
+    // MARK: - Display all the pins passed in parameters on the map
+    
+    func displayPinsOnMap(pins: [Pin]) {
         for pin in pins
         {
-            let pointAnnotation = MKPointAnnotation()
-            pointAnnotation.title = pin.city + ", " + pin.country
-            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude)
-            
-            self.isVisited = pin.isVisited
-            self.mapView.addAnnotation(pointAnnotation)
+            //getCountryNameFromCoordinates
+            let annotation = Annotation(title: pin.city, subtitle: "", coordinate: CLLocationCoordinate2D(latitude: pin.coordinates.latitude, longitude: pin.coordinates.longitude), isVisited: pin.isVisited)
+            self.mapView.addAnnotation(annotation)
         }
-
+        
     }
     
     // MARK: - MapView Delegate
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let reuseId = "pin"
-        let currentPin: [Pin]
-        currentPin = pins.filter({return $0.city == annotation.title!!})
- 
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        if let annotation = annotation as? Annotation
+        {
+            let reuseId = "pin"
+            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            if pinView == nil {
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             
-            if currentPin.isEmpty == false {
-                if currentPin[0].isVisited == true {
+                if annotation.isVisited == true {
                     pinView!.pinTintColor = UIColor.greenColor()
                 }
                 else {
                     pinView!.pinTintColor = UIColor.redColor()
                 }
+
+                pinView!.canShowCallout = true
+                pinView!.animatesDrop = true
             }
-            else
-            {
-                if self.isVisited == true {
-                    pinView!.pinTintColor = UIColor.greenColor()
-                }
-                else {
-                    pinView!.pinTintColor = UIColor.redColor()
-                }
+            else {
+                pinView!.annotation = annotation
             }
-            
-            pinView!.canShowCallout = true
-            pinView!.animatesDrop = true
-        }
-        else {
-            pinView!.annotation = annotation
-        }
         
-        return pinView
+            return pinView
+        }
+        return nil
     }
     
     func getCountryNameFromCoordinates(latitude: Double, longitude: Double) -> String {
@@ -220,6 +223,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         })
         
         return country
-
     }
+
 }

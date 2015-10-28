@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1571BDF7FCF002468B4 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
 		580AE15A1BDFE024002468B4 /* PinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1591BDFE024002468B4 /* PinCell.swift */; settings = {ASSET_TAGS = (); }; };
+		580AE15C1BE0CF31002468B4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE15B1BE0CF31002468B4 /* Annotation.swift */; settings = {ASSET_TAGS = (); }; };
 		5847EEA61BDE338A007AF2FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847EEA51BDE338A007AF2FD /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */; };
 		58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		580AE1571BDF7FCF002468B4 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		580AE1591BDFE024002468B4 /* PinCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinCell.swift; sourceTree = "<group>"; };
+		580AE15B1BE0CF31002468B4 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		5847EEA51BDE338A007AF2FD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		58924DEB1BD8E4FE001A9FF6 /* SignInUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				5847EEA51BDE338A007AF2FD /* User.swift */,
 				580AE1571BDF7FCF002468B4 /* Pin.swift */,
 				580AE1591BDFE024002468B4 /* PinCell.swift */,
+				580AE15B1BE0CF31002468B4 /* Annotation.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				580AE15A1BDFE024002468B4 /* PinCell.swift in Sources */,
 				58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */,
 				58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */,
+				580AE15C1BE0CF31002468B4 /* Annotation.swift in Sources */,
 				58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */,
 				580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */,
 				58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */,

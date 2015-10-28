@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 
 class PinCell: UICollectionViewCell {
-
-    @IBOutlet weak var cityImageView: UIImageView!
-    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var placeVisitedImageView: UIImageView!
+    @IBOutlet weak var placeVisitedLabel: UILabel!
     
+    @IBOutlet weak var placeToVisitImageView: UIImageView!
+    @IBOutlet weak var placeToVisitLabel: UILabel!
 }
