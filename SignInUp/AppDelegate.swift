@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        // Google Maps API
+        GMSServices.provideAPIKey("AIzaSyBZZ0Wr6eHQLQBOMUHc8cRU3dNCJ78PQQo")
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

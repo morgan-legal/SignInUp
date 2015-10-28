@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-// Google API Key : AIzaSyDkQnuuHQn2_gS5dbKyUHsVpQKfHJ3et70
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
 
@@ -30,24 +29,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "profile-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToProfile:")
         navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
         
-       /* getAllPins({
-            pins in
-            self.pins = pins
-            self.displayAllPins()
-        })
-        */
-        
+        let rightBarButtonItem = UIBarButtonItem(title: "GoogleMaps", style: UIBarButtonItemStyle.Plain, target: self, action: "goToGoogleMaps:")
+        navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
+
         fetchPlacesToVisit({
             placesVisited in
             self.placesVisited = placesVisited
-            //self.placesVisitedCollectionView.reloadData()
             self.displayPinsOnMap(self.placesVisited)
         })
         
         fetchPlacesVisited({
             placesToVisit in
             self.placesToVisit = placesToVisit
-            //self.placesToVisitCollectionView.reloadData()
             self.displayPinsOnMap(self.placesToVisit)
         })
         
@@ -75,6 +68,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let profileVC = self.storyboard!.instantiateViewControllerWithIdentifier("Profile")
         let navController = UINavigationController(rootViewController: profileVC) 
+        self.presentViewController(navController, animated:true, completion: nil)
+    }
+    
+    func goToGoogleMaps(button: UIBarButtonItem){
+        
+        let googleMapsVC = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMaps")
+        let navController = UINavigationController(rootViewController: googleMapsVC)
         self.presentViewController(navController, animated:true, completion: nil)
     }
     
@@ -137,7 +137,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         let coordinates = PFGeoPoint(latitude: pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
         
-        let country = self.getCountryNameFromCoordinates(pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
+        let country = "" // self.getCountryNameFromCoordinates(pointAnnotation.coordinate.latitude, longitude: pointAnnotation.coordinate.longitude)
         savePin( Pin(userId: (currentUser()?.id)!, isVisited: self.isVisited, city: cityName, country: country, coordinates: coordinates) )
         
         self.mapView.centerCoordinate = pointAnnotation.coordinate

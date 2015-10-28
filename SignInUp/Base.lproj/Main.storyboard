@@ -404,7 +404,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="placesVisitedCollectionViewCell" id="FW5-M4-TSJ" customClass="PinCell" customModule="SignInUp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="11" width="92" height="109"/>
+                                        <rect key="frame" x="0.0" y="10.5" width="92" height="109"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="92" height="109"/>
@@ -546,6 +546,25 @@
             </objects>
             <point key="canvasLocation" x="2353" y="3073"/>
         </scene>
+        <!--Google Map View Controller-->
+        <scene sceneID="qGF-Yb-mYe">
+            <objects>
+                <viewController storyboardIdentifier="GoogleMaps" id="BEy-kn-1MB" customClass="GoogleMapViewController" customModule="SignInUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NIg-HS-37I"/>
+                        <viewControllerLayoutGuide type="bottom" id="n2U-vq-eSt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="men-wX-pl6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lnR-Tp-8cL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="53n-EM-a9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2353" y="3746"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="zDn-L1-MyV">
             <objects>
@@ -672,6 +691,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJV-6o-YON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1659" y="3073"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s1Y-ci-jOQ">
+            <objects>
+                <navigationController storyboardIdentifier="GMSNavController" automaticallyAdjustsScrollViewInsets="NO" id="L0D-ph-Nod" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tqu-JF-8OF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BEy-kn-1MB" kind="relationship" relationship="rootViewController" id="pl5-0d-IUb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnM-TL-sFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="3746"/>
         </scene>
     </scenes>
 </document>

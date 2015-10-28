@@ -10,7 +10,21 @@
 		580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1571BDF7FCF002468B4 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
 		580AE15A1BDFE024002468B4 /* PinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1591BDFE024002468B4 /* PinCell.swift */; settings = {ASSET_TAGS = (); }; };
 		580AE15C1BE0CF31002468B4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE15B1BE0CF31002468B4 /* Annotation.swift */; settings = {ASSET_TAGS = (); }; };
+		580AE15E1BE0E133002468B4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 580AE15D1BE0E133002468B4 /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		5847EEA61BDE338A007AF2FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847EEA51BDE338A007AF2FD /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		587F042C1BE0F5D700D232C0 /* GoogleMapsM4B.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F042B1BE0F5D700D232C0 /* GoogleMapsM4B.framework */; settings = {ASSET_TAGS = (); }; };
+		587F042E1BE0F62400D232C0 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 587F042D1BE0F62400D232C0 /* GoogleMaps.bundle */; settings = {ASSET_TAGS = (); }; };
+		587F04301BE0F64C00D232C0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F042F1BE0F64C00D232C0 /* Accelerate.framework */; };
+		587F04321BE0F65300D232C0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04311BE0F65300D232C0 /* AVFoundation.framework */; };
+		587F04341BE0F65C00D232C0 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04331BE0F65C00D232C0 /* CoreBluetooth.framework */; };
+		587F04361BE0F66900D232C0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04351BE0F66900D232C0 /* CoreData.framework */; };
+		587F04381BE0F67800D232C0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04371BE0F67800D232C0 /* CoreText.framework */; };
+		587F043A1BE0F68800D232C0 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04391BE0F68800D232C0 /* GLKit.framework */; };
+		587F043C1BE0F69100D232C0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F043B1BE0F69100D232C0 /* ImageIO.framework */; };
+		587F043E1BE0F69F00D232C0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F043D1BE0F69F00D232C0 /* libc++.tbd */; };
+		587F04401BE0F6B200D232C0 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F043F1BE0F6B200D232C0 /* libicucore.tbd */; };
+		587F04421BE0F6C700D232C0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04411BE0F6C700D232C0 /* OpenGLES.framework */; };
+		587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */; };
 		58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */; };
 		58924DF41BD8E4FE001A9FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58924DF21BD8E4FE001A9FF6 /* Main.storyboard */; };
@@ -62,7 +76,21 @@
 		580AE1571BDF7FCF002468B4 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		580AE1591BDFE024002468B4 /* PinCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinCell.swift; sourceTree = "<group>"; };
 		580AE15B1BE0CF31002468B4 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		580AE15D1BE0E133002468B4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5847EEA51BDE338A007AF2FD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		587F042B1BE0F5D700D232C0 /* GoogleMapsM4B.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsM4B.framework; sourceTree = "<group>"; };
+		587F042D1BE0F62400D232C0 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMapsM4B.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		587F042F1BE0F64C00D232C0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		587F04311BE0F65300D232C0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		587F04331BE0F65C00D232C0 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		587F04351BE0F66900D232C0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		587F04371BE0F67800D232C0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		587F04391BE0F68800D232C0 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		587F043B1BE0F69100D232C0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		587F043D1BE0F69F00D232C0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		587F043F1BE0F6B200D232C0 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		587F04411BE0F6C700D232C0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
 		58924DEB1BD8E4FE001A9FF6 /* SignInUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -105,10 +133,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587F04421BE0F6C700D232C0 /* OpenGLES.framework in Frameworks */,
+				587F04401BE0F6B200D232C0 /* libicucore.tbd in Frameworks */,
+				587F043E1BE0F69F00D232C0 /* libc++.tbd in Frameworks */,
+				587F043C1BE0F69100D232C0 /* ImageIO.framework in Frameworks */,
+				587F043A1BE0F68800D232C0 /* GLKit.framework in Frameworks */,
+				587F04381BE0F67800D232C0 /* CoreText.framework in Frameworks */,
+				587F04361BE0F66900D232C0 /* CoreData.framework in Frameworks */,
+				587F04341BE0F65C00D232C0 /* CoreBluetooth.framework in Frameworks */,
+				587F04321BE0F65300D232C0 /* AVFoundation.framework in Frameworks */,
+				587F04301BE0F64C00D232C0 /* Accelerate.framework in Frameworks */,
 				58B375F81BDE5FA60087A620 /* MapKit.framework in Frameworks */,
 				58924E3B1BD8E6BE001A9FF6 /* Social.framework in Frameworks */,
 				58924E391BD8E6B8001A9FF6 /* Accounts.framework in Frameworks */,
 				58924E371BD8E65B001A9FF6 /* libsqlite3.tbd in Frameworks */,
+				587F042C1BE0F5D700D232C0 /* GoogleMapsM4B.framework in Frameworks */,
 				58924E351BD8E650001A9FF6 /* libz.tbd in Frameworks */,
 				58924E331BD8E647001A9FF6 /* SystemConfiguration.framework in Frameworks */,
 				58924E311BD8E63C001A9FF6 /* StoreKit.framework in Frameworks */,
@@ -143,6 +182,7 @@
 		58924DE21BD8E4FE001A9FF6 = {
 			isa = PBXGroup;
 			children = (
+				580AE15D1BE0E133002468B4 /* Podfile */,
 				58924E1F1BD8E52B001A9FF6 /* Frameworks */,
 				58924DED1BD8E4FE001A9FF6 /* SignInUp */,
 				58924E051BD8E4FE001A9FF6 /* SignInUpTests */,
@@ -194,6 +234,18 @@
 		58924E1F1BD8E52B001A9FF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				587F04411BE0F6C700D232C0 /* OpenGLES.framework */,
+				587F043F1BE0F6B200D232C0 /* libicucore.tbd */,
+				587F043D1BE0F69F00D232C0 /* libc++.tbd */,
+				587F043B1BE0F69100D232C0 /* ImageIO.framework */,
+				587F04391BE0F68800D232C0 /* GLKit.framework */,
+				587F04371BE0F67800D232C0 /* CoreText.framework */,
+				587F04351BE0F66900D232C0 /* CoreData.framework */,
+				587F04331BE0F65C00D232C0 /* CoreBluetooth.framework */,
+				587F04311BE0F65300D232C0 /* AVFoundation.framework */,
+				587F042F1BE0F64C00D232C0 /* Accelerate.framework */,
+				587F042D1BE0F62400D232C0 /* GoogleMaps.bundle */,
+				587F042B1BE0F5D700D232C0 /* GoogleMapsM4B.framework */,
 				58B375F71BDE5FA60087A620 /* MapKit.framework */,
 				58924E3A1BD8E6BE001A9FF6 /* Social.framework */,
 				58924E381BD8E6B8001A9FF6 /* Accounts.framework */,
@@ -245,6 +297,7 @@
 				58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */,
 				58924E481BD902CD001A9FF6 /* ProfileViewController.swift */,
 				58A7C2B81BD9296A00793645 /* MapViewController.swift */,
+				587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -358,7 +411,9 @@
 			files = (
 				58924DFC1BD8E4FE001A9FF6 /* LaunchScreen.storyboard in Resources */,
 				58924DF91BD8E4FE001A9FF6 /* Assets.xcassets in Resources */,
+				580AE15E1BE0E133002468B4 /* Podfile in Resources */,
 				58924DF41BD8E4FE001A9FF6 /* Main.storyboard in Resources */,
+				587F042E1BE0F62400D232C0 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +446,7 @@
 				580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */,
 				58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */,
 				58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */,
+				587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */,
 				58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */,
 				58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */,
 				5847EEA61BDE338A007AF2FD /* User.swift in Sources */,
@@ -543,6 +599,8 @@
 				);
 				INFOPLIST_FILE = SignInUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = MLG.SignInUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SignInUp-Bridging-Header.h";
@@ -561,6 +619,7 @@
 				);
 				INFOPLIST_FILE = SignInUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = MLG.SignInUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SignInUp-Bridging-Header.h";
