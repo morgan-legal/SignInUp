@@ -115,7 +115,7 @@ class LogInViewController: UIViewController {
     func processSignIn()
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mapVC = storyboard.instantiateViewControllerWithIdentifier("MapNavController")
+        let mapVC = storyboard.instantiateViewControllerWithIdentifier("GMSNavController")
         //self.navigationController!.pushViewController(mapVC, animated: true)
         self.presentViewController(mapVC, animated: true, completion: nil)
     }

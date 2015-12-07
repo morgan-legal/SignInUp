@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         // Google Maps API
+        //GMSServices.provideAPIKey("AIzaSyDvuhrNaUQQ8ZTuFlo1CCw5u7EDEtVQFSU")
         GMSServices.provideAPIKey("AIzaSyBZZ0Wr6eHQLQBOMUHc8cRU3dNCJ78PQQo")
         
         

@@ -7,24 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1571BDF7FCF002468B4 /* Pin.swift */; settings = {ASSET_TAGS = (); }; };
-		580AE15A1BDFE024002468B4 /* PinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1591BDFE024002468B4 /* PinCell.swift */; settings = {ASSET_TAGS = (); }; };
-		580AE15C1BE0CF31002468B4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE15B1BE0CF31002468B4 /* Annotation.swift */; settings = {ASSET_TAGS = (); }; };
-		580AE15E1BE0E133002468B4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 580AE15D1BE0E133002468B4 /* Podfile */; settings = {ASSET_TAGS = (); }; };
-		5847EEA61BDE338A007AF2FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847EEA51BDE338A007AF2FD /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		587F042C1BE0F5D700D232C0 /* GoogleMapsM4B.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F042B1BE0F5D700D232C0 /* GoogleMapsM4B.framework */; settings = {ASSET_TAGS = (); }; };
-		587F042E1BE0F62400D232C0 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 587F042D1BE0F62400D232C0 /* GoogleMaps.bundle */; settings = {ASSET_TAGS = (); }; };
-		587F04301BE0F64C00D232C0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F042F1BE0F64C00D232C0 /* Accelerate.framework */; };
-		587F04321BE0F65300D232C0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04311BE0F65300D232C0 /* AVFoundation.framework */; };
-		587F04341BE0F65C00D232C0 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04331BE0F65C00D232C0 /* CoreBluetooth.framework */; };
-		587F04361BE0F66900D232C0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04351BE0F66900D232C0 /* CoreData.framework */; };
-		587F04381BE0F67800D232C0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04371BE0F67800D232C0 /* CoreText.framework */; };
-		587F043A1BE0F68800D232C0 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04391BE0F68800D232C0 /* GLKit.framework */; };
-		587F043C1BE0F69100D232C0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F043B1BE0F69100D232C0 /* ImageIO.framework */; };
-		587F043E1BE0F69F00D232C0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F043D1BE0F69F00D232C0 /* libc++.tbd */; };
-		587F04401BE0F6B200D232C0 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F043F1BE0F6B200D232C0 /* libicucore.tbd */; };
-		587F04421BE0F6C700D232C0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 587F04411BE0F6C700D232C0 /* OpenGLES.framework */; };
-		587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1571BDF7FCF002468B4 /* Pin.swift */; };
+		580AE15A1BDFE024002468B4 /* PinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1591BDFE024002468B4 /* PinCell.swift */; };
+		580AE15C1BE0CF31002468B4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE15B1BE0CF31002468B4 /* Annotation.swift */; };
+		580AE15E1BE0E133002468B4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 580AE15D1BE0E133002468B4 /* Podfile */; };
+		5847EEA61BDE338A007AF2FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847EEA51BDE338A007AF2FD /* User.swift */; };
+		584D6FFB1BE3EE3400472DE8 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D6FFA1BE3EE3400472DE8 /* CustomSearchController.swift */; };
+		584D6FFD1BE3EE6000472DE8 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D6FFC1BE3EE6000472DE8 /* CustomSearchBar.swift */; };
+		585717291BE22C12001DE6F6 /* SearchPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585717281BE22C12001DE6F6 /* SearchPlaceTableViewController.swift */; };
+		587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */; };
 		58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */; };
 		58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */; };
 		58924DF41BD8E4FE001A9FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58924DF21BD8E4FE001A9FF6 /* Main.storyboard */; };
@@ -33,8 +24,8 @@
 		58924DFC1BD8E4FE001A9FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58924DFA1BD8E4FE001A9FF6 /* LaunchScreen.storyboard */; };
 		58924E071BD8E4FE001A9FF6 /* SignInUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E061BD8E4FE001A9FF6 /* SignInUpTests.swift */; };
 		58924E121BD8E4FE001A9FF6 /* SignInUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E111BD8E4FE001A9FF6 /* SignInUpUITests.swift */; };
-		58924E221BD8E5F4001A9FF6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E201BD8E5F4001A9FF6 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
-		58924E231BD8E5F4001A9FF6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E211BD8E5F4001A9FF6 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		58924E221BD8E5F4001A9FF6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E201BD8E5F4001A9FF6 /* Bolts.framework */; };
+		58924E231BD8E5F4001A9FF6 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E211BD8E5F4001A9FF6 /* Parse.framework */; };
 		58924E251BD8E60B001A9FF6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E241BD8E60B001A9FF6 /* AudioToolbox.framework */; };
 		58924E271BD8E611001A9FF6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E261BD8E611001A9FF6 /* CFNetwork.framework */; };
 		58924E291BD8E61A001A9FF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E281BD8E61A001A9FF6 /* CoreGraphics.framework */; };
@@ -47,12 +38,14 @@
 		58924E371BD8E65B001A9FF6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E361BD8E65B001A9FF6 /* libsqlite3.tbd */; };
 		58924E391BD8E6B8001A9FF6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E381BD8E6B8001A9FF6 /* Accounts.framework */; };
 		58924E3B1BD8E6BE001A9FF6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58924E3A1BD8E6BE001A9FF6 /* Social.framework */; };
-		58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E441BD8EADA001A9FF6 /* CreateAccountViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E461BD902B5001A9FF6 /* LogInViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E481BD902CD001A9FF6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C2B81BD9296A00793645 /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E441BD8EADA001A9FF6 /* CreateAccountViewController.swift */; };
+		58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E461BD902B5001A9FF6 /* LogInViewController.swift */; };
+		58924E491BD902CD001A9FF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E481BD902CD001A9FF6 /* ProfileViewController.swift */; };
+		58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */; };
+		58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C2B81BD9296A00793645 /* MapViewController.swift */; };
 		58B375F81BDE5FA60087A620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B375F71BDE5FA60087A620 /* MapKit.framework */; };
+		58CBF6D61BE21C8A008D342A /* PlaceVisitedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CBF6D51BE21C8A008D342A /* PlaceVisitedViewController.swift */; };
+		CC8CEE0185070692CF6BE08F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9BE92DE9081C6D41F0FF48 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,18 +71,9 @@
 		580AE15B1BE0CF31002468B4 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		580AE15D1BE0E133002468B4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5847EEA51BDE338A007AF2FD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		587F042B1BE0F5D700D232C0 /* GoogleMapsM4B.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsM4B.framework; sourceTree = "<group>"; };
-		587F042D1BE0F62400D232C0 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMapsM4B.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		587F042F1BE0F64C00D232C0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		587F04311BE0F65300D232C0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		587F04331BE0F65C00D232C0 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		587F04351BE0F66900D232C0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		587F04371BE0F67800D232C0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		587F04391BE0F68800D232C0 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		587F043B1BE0F69100D232C0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		587F043D1BE0F69F00D232C0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		587F043F1BE0F6B200D232C0 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		587F04411BE0F6C700D232C0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		584D6FFA1BE3EE3400472DE8 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		584D6FFC1BE3EE6000472DE8 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		585717281BE22C12001DE6F6 /* SearchPlaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlaceTableViewController.swift; sourceTree = "<group>"; };
 		587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
 		58924DEB1BD8E4FE001A9FF6 /* SignInUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +110,10 @@
 		58924E4A1BD90D56001A9FF6 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		58A7C2B81BD9296A00793645 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		58B375F71BDE5FA60087A620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		58CBF6D51BE21C8A008D342A /* PlaceVisitedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceVisitedViewController.swift; sourceTree = "<group>"; };
+		E685A581DCB7F83003FD9303 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		EC9BE92DE9081C6D41F0FF48 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB080C44114231F20FB9F3FF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,21 +121,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				587F04421BE0F6C700D232C0 /* OpenGLES.framework in Frameworks */,
-				587F04401BE0F6B200D232C0 /* libicucore.tbd in Frameworks */,
-				587F043E1BE0F69F00D232C0 /* libc++.tbd in Frameworks */,
-				587F043C1BE0F69100D232C0 /* ImageIO.framework in Frameworks */,
-				587F043A1BE0F68800D232C0 /* GLKit.framework in Frameworks */,
-				587F04381BE0F67800D232C0 /* CoreText.framework in Frameworks */,
-				587F04361BE0F66900D232C0 /* CoreData.framework in Frameworks */,
-				587F04341BE0F65C00D232C0 /* CoreBluetooth.framework in Frameworks */,
-				587F04321BE0F65300D232C0 /* AVFoundation.framework in Frameworks */,
-				587F04301BE0F64C00D232C0 /* Accelerate.framework in Frameworks */,
 				58B375F81BDE5FA60087A620 /* MapKit.framework in Frameworks */,
 				58924E3B1BD8E6BE001A9FF6 /* Social.framework in Frameworks */,
 				58924E391BD8E6B8001A9FF6 /* Accounts.framework in Frameworks */,
 				58924E371BD8E65B001A9FF6 /* libsqlite3.tbd in Frameworks */,
-				587F042C1BE0F5D700D232C0 /* GoogleMapsM4B.framework in Frameworks */,
 				58924E351BD8E650001A9FF6 /* libz.tbd in Frameworks */,
 				58924E331BD8E647001A9FF6 /* SystemConfiguration.framework in Frameworks */,
 				58924E311BD8E63C001A9FF6 /* StoreKit.framework in Frameworks */,
@@ -159,6 +136,7 @@
 				58924E251BD8E60B001A9FF6 /* AudioToolbox.framework in Frameworks */,
 				58924E231BD8E5F4001A9FF6 /* Parse.framework in Frameworks */,
 				58924E221BD8E5F4001A9FF6 /* Bolts.framework in Frameworks */,
+				CC8CEE0185070692CF6BE08F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +166,7 @@
 				58924E051BD8E4FE001A9FF6 /* SignInUpTests */,
 				58924E101BD8E4FE001A9FF6 /* SignInUpUITests */,
 				58924DEC1BD8E4FE001A9FF6 /* Products */,
+				F4BC788601884A970744A756 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,18 +213,6 @@
 		58924E1F1BD8E52B001A9FF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				587F04411BE0F6C700D232C0 /* OpenGLES.framework */,
-				587F043F1BE0F6B200D232C0 /* libicucore.tbd */,
-				587F043D1BE0F69F00D232C0 /* libc++.tbd */,
-				587F043B1BE0F69100D232C0 /* ImageIO.framework */,
-				587F04391BE0F68800D232C0 /* GLKit.framework */,
-				587F04371BE0F67800D232C0 /* CoreText.framework */,
-				587F04351BE0F66900D232C0 /* CoreData.framework */,
-				587F04331BE0F65C00D232C0 /* CoreBluetooth.framework */,
-				587F04311BE0F65300D232C0 /* AVFoundation.framework */,
-				587F042F1BE0F64C00D232C0 /* Accelerate.framework */,
-				587F042D1BE0F62400D232C0 /* GoogleMaps.bundle */,
-				587F042B1BE0F5D700D232C0 /* GoogleMapsM4B.framework */,
 				58B375F71BDE5FA60087A620 /* MapKit.framework */,
 				58924E3A1BD8E6BE001A9FF6 /* Social.framework */,
 				58924E381BD8E6B8001A9FF6 /* Accounts.framework */,
@@ -261,6 +228,7 @@
 				58924E241BD8E60B001A9FF6 /* AudioToolbox.framework */,
 				58924E201BD8E5F4001A9FF6 /* Bolts.framework */,
 				58924E211BD8E5F4001A9FF6 /* Parse.framework */,
+				EC9BE92DE9081C6D41F0FF48 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,8 +266,21 @@
 				58924E481BD902CD001A9FF6 /* ProfileViewController.swift */,
 				58A7C2B81BD9296A00793645 /* MapViewController.swift */,
 				587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */,
+				585717281BE22C12001DE6F6 /* SearchPlaceTableViewController.swift */,
+				58CBF6D51BE21C8A008D342A /* PlaceVisitedViewController.swift */,
+				584D6FFA1BE3EE3400472DE8 /* CustomSearchController.swift */,
+				584D6FFC1BE3EE6000472DE8 /* CustomSearchBar.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F4BC788601884A970744A756 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB080C44114231F20FB9F3FF /* Pods.debug.xcconfig */,
+				E685A581DCB7F83003FD9303 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +290,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58924E161BD8E4FE001A9FF6 /* Build configuration list for PBXNativeTarget "SignInUp" */;
 			buildPhases = (
+				A7FF097426A1CD44C2EB4BF7 /* Check Pods Manifest.lock */,
 				58924DE71BD8E4FE001A9FF6 /* Sources */,
 				58924DE81BD8E4FE001A9FF6 /* Frameworks */,
 				58924DE91BD8E4FE001A9FF6 /* Resources */,
+				74778BA818EDC8F2CEF1ACBE /* Embed Pods Frameworks */,
+				53617103ED0BE21437BCD0E0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -413,7 +397,6 @@
 				58924DF91BD8E4FE001A9FF6 /* Assets.xcassets in Resources */,
 				580AE15E1BE0E133002468B4 /* Podfile in Resources */,
 				58924DF41BD8E4FE001A9FF6 /* Main.storyboard in Resources */,
-				587F042E1BE0F62400D232C0 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +416,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		53617103ED0BE21437BCD0E0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74778BA818EDC8F2CEF1ACBE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7FF097426A1CD44C2EB4BF7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		58924DE71BD8E4FE001A9FF6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -445,12 +476,16 @@
 				58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */,
 				580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */,
 				58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */,
+				585717291BE22C12001DE6F6 /* SearchPlaceTableViewController.swift in Sources */,
 				58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */,
+				58CBF6D61BE21C8A008D342A /* PlaceVisitedViewController.swift in Sources */,
 				587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */,
 				58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */,
+				584D6FFB1BE3EE3400472DE8 /* CustomSearchController.swift in Sources */,
 				58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */,
 				5847EEA61BDE338A007AF2FD /* User.swift in Sources */,
 				58A7C2B91BD9296A00793645 /* MapViewController.swift in Sources */,
+				584D6FFD1BE3EE6000472DE8 /* CustomSearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,7 +625,12 @@
 		};
 		58924E171BD8E4FE001A9FF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB080C44114231F20FB9F3FF /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -599,18 +639,58 @@
 				);
 				INFOPLIST_FILE = SignInUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				ONLY_ACTIVE_ARCH = NO;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MLG.SignInUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SignInUp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
 		58924E181BD8E4FE001A9FF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E685A581DCB7F83003FD9303 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -623,6 +703,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = MLG.SignInUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SignInUp-Bridging-Header.h";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
