@@ -118,16 +118,25 @@ class SearchPlaceTableViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     @IBAction func nextStepBarButtonPressed(sender: UIBarButtonItem) {
-        if self.isValidPlace {
+        if self.isValidPlace && self.placeVisited.isVisited {
            self.performSegueWithIdentifier("toAddPlaceVisitedStep2Segue", sender: self)
         }
-        
+        else if self.isValidPlace == true && self.placeVisited.isVisited == false {
+            self.performSegueWithIdentifier("toAddPlaceToVisitStep2Segue", sender: self)
+        }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toAddPlaceVisitedStep2Segue" {
             let placeVisitedVC: PlaceVisitedViewController = segue.destinationViewController as! PlaceVisitedViewController
 
+            placeVisitedVC.placeVisited = self.placeVisited
+            
+            //placeVisitedVC.delegate = self
+        }
+        else if segue.identifier == "toAddPlaceToVisitStep2Segue" {
+            let placeVisitedVC: PlaceVisitedViewController = segue.destinationViewController as! PlaceVisitedViewController
+            
             placeVisitedVC.placeVisited = self.placeVisited
             
             //placeVisitedVC.delegate = self

@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let navBar:UINavigationBar! =  self.navigationController?.navigationBar
+     /*   let navBar:UINavigationBar! =  self.navigationController?.navigationBar
         
         navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navBar.shadowImage = UIImage()
@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
             NSFontAttributeName : UIFont(name: "AvenirNext-Bold", size: 20)!
         ]
         
-        navBar.titleTextAttributes = attributes
+        navBar.titleTextAttributes = attributes*/
         
         createAccountButton.layer.cornerRadius = 5
         logInButton.layer.cornerRadius = 5

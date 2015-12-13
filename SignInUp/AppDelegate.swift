@@ -37,23 +37,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
-        let navController: UINavigationController
+        var tabBarController = UITabBarController()
+        //let navController: UINavigationController
+       
+        //let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
+        
+        //var initialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("myTabbarControllerID") as! UIViewController
+        //appDelegate.window?.rootViewController = initialViewController
+        //appDelegate.window?.makeKeyAndVisible()
+        
         
         if currentUser() != nil
         {
-            initialViewController = storyboard.instantiateViewControllerWithIdentifier("Map") as UIViewController
-            navController = UINavigationController(rootViewController: initialViewController)
-
+            //initialViewController = storyboard.instantiateViewControllerWithIdentifier("GoogleMaps") as UIViewController
+            //navController = UINavigationController(rootViewController: initialViewController)
+            tabBarController = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+            tabBarController.selectedIndex = 1
+            self.window?.rootViewController = tabBarController
+            self.window?.makeKeyAndVisible()
        }
         else
         {
             initialViewController = storyboard.instantiateViewControllerWithIdentifier("Home") as UIViewController
-            navController = UINavigationController(rootViewController: initialViewController)
+            //navController = UINavigationController(rootViewController: initialViewController)
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
         }
         
-        self.window?.rootViewController = navController
-        self.window?.makeKeyAndVisible()
-        
+        //self.window?.rootViewController = navController
+
         return true
     }
 

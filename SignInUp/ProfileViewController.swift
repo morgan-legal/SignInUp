@@ -24,18 +24,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //navigationItem.titleView = UIImageView(image: UIImage(named: "profile-header"))
-        
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "map-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToMap:")
-        navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
-        
         /*getAllPins({
             pins in
             self.pins = pins
             self.placesVisitedCollectionView.reloadData()
         })*/
         
-        fetchPlacesToVisit({
+     /*   fetchPlacesToVisit({
             placesVisited in
             self.placesVisited = placesVisited
             self.placesVisitedCollectionView.reloadData()
@@ -45,17 +40,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             placesToVisit in
             self.placesToVisit = placesToVisit
             self.placesToVisitCollectionView.reloadData()
-        })
+        })*/
+        
+        createProfileNavigationBar()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         self.emailLabel.text = currentUser()?.email
-        self.firstNameLabel.text = currentUser()?.firstName
-        self.lastNameLabel.text = currentUser()?.lastName
+        self.firstNameLabel.text = currentUser()?.firstName.capitalizedString
+        self.lastNameLabel.text = currentUser()?.lastName.capitalizedString
         
         
         placesToVisitCollectionView.delegate = self
@@ -63,7 +58,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         placesToVisitCollectionView.dataSource = self
         placesVisitedCollectionView.dataSource = self
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,13 +66,33 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     }
     
 
-    func goToMap(button: UIBarButtonItem) {
-        let mapVC = self.storyboard!.instantiateViewControllerWithIdentifier("Map")
-        let navController = UINavigationController(rootViewController: mapVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
-        self.presentViewController(navController, animated:true, completion: nil)
+    func createProfileNavigationBar() {
+        let attributes = [
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "AvenirNext-Bold", size: 20)!
+        ]
+        
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x326094)
+        self.navigationController?.navigationBar.topItem?.title = "Profile"
+        
+        let leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: UIBarButtonItemStyle.Plain, target: self, action: "logOutButtonPressed:")
+        navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
+    }
+    
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 
-    @IBAction func logOutButtonPressed(sender: UIButton)
+    // MARK: Log Out the user
+
+    func logOutButtonPressed(sender: UIBarButtonItem)
     {
         
         // Send a request to log out a user

@@ -7,24 +7,24 @@
 //
 
 import UIKit
+import CoreLocation
 
-
-class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
+class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
     var placesToVisit: [Pin] = []
     var placesVisited: [Pin] = []
     var googleMapView: GMSMapView!
     var placesClient: GMSPlacesClient?
     
+    let locationManager = CLLocationManager()
+    var didFindMyLocation = false
+
     @IBOutlet weak var mapView: UIView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "map-button"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToMap:")
-        navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
-        
-        fetchPlacesToVisit({
+     /*   fetchPlacesToVisit({
             placesVisited in
             self.placesVisited = placesVisited
             for place in placesVisited{
@@ -38,45 +38,17 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
             for place in placesToVisit{
                 self.displayMarkerFromLocationCoordinates(place)
             }
-
-        })
+        })*/
+        
+        createMapNavigationBar()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-
-        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
     }
-    
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBAction func searchTextFieldChanged(sender: UITextField) {
-    
-        
-        //let visibleRegion = self.googleMapView.projection.visibleRegion()
-        //let bounds = GMSCoordinateBounds(coordinate: visibleRegion.farLeft, coordinate: visibleRegion.nearRight)
-        //let filter = GMSAutocompleteFilter()
-        var res:[GMSAutocompletePrediction] = []
-        
-        //filter.type = GMSPlacesAutocompleteTypeFilter.City
-        placesClient?.autocompleteQuery(self.searchTextField.text!, bounds: nil, filter: nil, callback: { (results, error: NSError?) -> Void in
-            if let error = error {
-                print("Autocomplete error \(error)")
-            }
-            res = (results as? [GMSAutocompletePrediction])!
-            for result in results! {
-                if let result = result as? GMSAutocompletePrediction {
-                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
-                }
-            }
-        })
-        
-        print(res)
-    
-    }
-
 
     override func viewDidLayoutSubviews() {
         
@@ -94,7 +66,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         }
         self.googleMapView.delegate = self
         placesClient = GMSPlacesClient()
-        //self.mapView.addSubview(self.googleMapView)
+        
         self.mapView.addSubview(self.googleMapView)
     }
     
@@ -103,25 +75,83 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addPlaceVisitedButtonPressed(sender: UIButton) {
-        //createAlertForPin("Add Green Pin", message: "Where did you go?")
-       // self.performSegueWithIdentifier("toAddPlaceVisitedStep1Segue", sender: self)
-    }
+    // MARK: Helper functions
     
-    @IBAction func addPlaceToVisitButtonPressed(sender: UIButton) {
-        //createAlertForPin("Add Red Pin", message: "Where do you want to go?")
+    func createMapNavigationBar() {
+        let attributes = [
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "AvenirNext-Bold", size: 20)!
+        ]
         
-        //self.placeAutocomplete(self.searchTextField.text!)
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        //self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x326094)
+        self.navigationController?.navigationBar.topItem?.title = "i am Hemingway"
+        
+        var placeVisitedImage = UIImage(named: "placeVisited-Small")
+        placeVisitedImage = placeVisitedImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let leftBarButtonItem = UIBarButtonItem(image: placeVisitedImage, style: UIBarButtonItemStyle.Plain, target: self, action: "placeVisitedButtonPressed:")
+        navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
+ 
+        var placeToVisitImage = UIImage(named: "placeToVisit-Small")
+        placeToVisitImage = placeToVisitImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let rightBarButtonItem = UIBarButtonItem(image: placeToVisitImage, style: UIBarButtonItemStyle.Plain, target: self, action: "placeToVisitButtonPressed:")
+        navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
+    }
+
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
     
+    // MARK: IBActions - Adding green and red pins
     
-    func goToMap(button: UIBarButtonItem) {
-        let mapVC = self.storyboard!.instantiateViewControllerWithIdentifier("Map")
-        let navController = UINavigationController(rootViewController: mapVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
+    func placeVisitedButtonPressed(sender: UIButton){
+        let placeVisitedVC = self.storyboard!.instantiateViewControllerWithIdentifier("placeVisitedNavSegue")
+        //let navController = UINavigationController(rootViewController: placeToVisitVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        self.presentViewController(placeVisitedVC, animated:true, completion: nil)
+    }
+    
+    func placeToVisitButtonPressed(sender: UIButton){
+        let placeToVisitVC = self.storyboard!.instantiateViewControllerWithIdentifier("placeToVisitNavSegue")
+        //let navController = UINavigationController(rootViewController: placeToVisitVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
+        self.presentViewController(placeToVisitVC, animated:true, completion: nil)
+    }
+
+    // MARK: Location Manager Delegate Methods
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        if let location = locations.first {
+            self.googleMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 1, bearing: 0, viewingAngle: 0)
+            self.locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            self.locationManager.startUpdatingLocation()
+            self.googleMapView.myLocationEnabled = true
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Errors: " + error.localizedDescription)
+    }
+    
+    // MARK: Navigation between VCs
+    
+   /* func goToProfile(button: UIBarButtonItem) {
+        let profileVC = self.storyboard!.instantiateViewControllerWithIdentifier("Profile")
+        let navController = UINavigationController(rootViewController: profileVC) // Creating a navigation controller with VC1 at the root of the navigation stack.
         self.presentViewController(navController, animated:true, completion: nil)
-    }
+    }*/
     
-    // MARK: - Add Markers to the Map
+    // MARK: Add Markers to the Map
     
     func displayMarkerFromLocationCoordinates( location: Pin ) {
         var markerColor = UIColor()
@@ -138,74 +168,5 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         marker.icon = GMSMarker.markerImageWithColor(markerColor)
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.map = googleMapView
-    }
-    
-    
-    func createAlertForPin(title: String, message: String){
-        var alertTextField: UITextField?
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default)
-            {   (alert: UIAlertAction!) -> Void in
-                
-                self.placeAutocomplete(alertTextField!.text!)
-                
-        }
-        
-        alertController.addAction(defaultAction)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-        
-        alertController.addTextFieldWithConfigurationHandler
-            {  (textField: UITextField!) -> Void in
-                textField.placeholder = "Name of the city"
-                alertTextField = textField
-        }
-        
-        presentViewController( alertController, animated: true, completion:nil )
-    }
-    
-    func placeAutocomplete( searchCity: String) {
-        //let visibleRegion = self.googleMapView.projection.visibleRegion()
-        //let bounds = GMSCoordinateBounds(coordinate: visibleRegion.farLeft, coordinate: visibleRegion.nearRight)
-        let filter = GMSAutocompleteFilter()
-        var res:[GMSAutocompletePrediction] = []
-        
-        filter.type = GMSPlacesAutocompleteTypeFilter.City
-        placesClient?.autocompleteQuery(searchCity, bounds: nil, filter: filter, callback: { (results, error: NSError?) -> Void in
-            if let error = error {
-                print("Autocomplete error \(error)")
-            }
-            res = (results as? [GMSAutocompletePrediction])!
-            for result in results! {
-                if let result = result as? GMSAutocompletePrediction {
-                    print(result.attributedFullText)
-                    //print("Result \(result.attributedFullText) with placeID \(result.placeID)")
-                }
-            }
-        })
-        
-       // print(placesClient?.description)
-    }
-    
-   func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!) {
-   /*      //let visibleRegion = self.googleMapView.projection.visibleRegion()
-        //let bounds = GMSCoordinateBounds(coordinate: visibleRegion.farLeft, coordinate: visibleRegion.nearRight)
-        //let filter = GMSAutocompleteFilter()
-        var res:[GMSAutocompletePrediction] = []
-        
-        //filter.type = GMSPlacesAutocompleteTypeFilter.City
-        placesClient?.autocompleteQuery("Paris", bounds: nil, filter: nil, callback: { (results, error: NSError?) -> Void in
-            if let error = error {
-                print("Autocomplete error \(error)")
-            }
-            res = (results as? [GMSAutocompletePrediction])!
-            for result in results! {
-                if let result = result as? GMSAutocompletePrediction {
-                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
-                }
-            }
-        })
-        
-        print(res)*/
     }
 }
