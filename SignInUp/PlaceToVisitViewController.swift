@@ -94,17 +94,17 @@ class PlaceToVisitViewController: UIViewController {
         sender.inputView = datePicker
         
         if sender == self.toDateTextField {
-            isFromDate = true
+            isFromDate = false
         }
         else {
-            isFromDate = false
+            isFromDate = true
         }
         datePicker.addTarget(self, action: "handleDatePickers:", forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func handleDatePickers(sender: UIDatePicker) {
         dateFormatter.dateStyle = .LongStyle
-        if isFromDate == true {
+        if isFromDate == false {
             toDateTextField.text = dateFormatter.stringFromDate(sender.date)
             self.toDate = sender.date
         }

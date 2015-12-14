@@ -14,16 +14,19 @@ class PictureCell: UICollectionViewCell {
 
 class PlaceVisitedViewController: UIViewController{
     
-    var placeVisited: Pin!
+    //var placeVisited: Pin!
     
-    @IBOutlet weak var placeVisitedTextField: UITextField!
-
-    //Dates 
+    @IBOutlet weak var searchPlaceTextField: AutoCompleteTextField!
     @IBOutlet weak var fromDateTextField: UITextField!
     @IBOutlet weak var toDateTextField: UITextField!
-    var isFromDate:Bool!
-    
     @IBOutlet weak var picturesCollectionView: UICollectionView!
+    
+    var isFromDate:Bool!
+    let dateFormatter = NSDateFormatter()
+    var toDate: NSDate!
+    var fromDate: NSDate!
+    let placesClient = GMSPlacesClient()
+    var places = [String: String]() // Dictionary -> KEY: Place Name, VALUE: Place ID
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,15 +36,10 @@ class PlaceVisitedViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       // placeVisitedLabel.text = placeVisited.city + ", " + placeVisited.country
-       // print(placeVisited.coordinates.longitude)
-      //  print(placeVisited.coordinates.latitude)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -82,13 +80,16 @@ class PlaceVisitedViewController: UIViewController{
     }
 
     func addButtonPressed(sender: UIBarButtonItem) {
-        savePin(placeVisited)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        updatePinPropertiesFromPlaceID( self.places[self.searchPlaceTextField.text!]! ) {
+            place in
+            savePin( place )
+        }
+        //self.dismissViewControllerAnimated(true, completion: nil)
         
-        /*// Display map view controller
+        // Display map view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let googleMapVC = storyboard.instantiateViewControllerWithIdentifier("GoogleMaps")
-        self.presentViewController(googleMapVC, animated: true, completion: nil)*/
+        self.presentViewController(googleMapVC, animated: true, completion: nil)
     }
     
     // MARK: DatePicker TextFields
@@ -99,10 +100,10 @@ class PlaceVisitedViewController: UIViewController{
         sender.inputView = datePicker
         
         if sender == self.toDateTextField {
-            isFromDate = true
+            isFromDate = false
         }
         else {
-            isFromDate = false
+            isFromDate = true
         }
         
         datePicker.addTarget(self, action: "handlePlaceVisitedDatePickers:", forControlEvents: UIControlEvents.ValueChanged)
@@ -110,19 +111,106 @@ class PlaceVisitedViewController: UIViewController{
     func handlePlaceVisitedDatePickers(sender: UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .LongStyle
-        //dateFormatter.dateFormat = "yyyy-MM-dd"
-        if isFromDate == true {
+        if isFromDate == false {
             toDateTextField.text = dateFormatter.stringFromDate(sender.date)
+            self.toDate = sender.date
         }
         else{
             fromDateTextField.text = dateFormatter.stringFromDate(sender.date)
+            self.fromDate = sender.date
         }
     }
-    // When user click oustide the UITextField
+    
+    // MARK: When user click oustide the UITextField
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.fromDateTextField.resignFirstResponder()
         self.toDateTextField.resignFirstResponder()
     }
+    
+    
+    // MARK: AutoCompleteTextFields
+    
+    private func configureTextField(){
+        searchPlaceTextField.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        searchPlaceTextField.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)
+        searchPlaceTextField.autoCompleteCellHeight = 40.0
+        searchPlaceTextField.maximumAutoCompleteCount = 10
+        searchPlaceTextField.hidesWhenSelected = true
+        searchPlaceTextField.hidesWhenEmpty = true
+        searchPlaceTextField.enableAttributedText = true
+        var attributes = [String:AnyObject]()
+        attributes[NSForegroundColorAttributeName] = UIColor.blackColor()
+        attributes[NSFontAttributeName] = UIFont(name: "HelveticaNeue-Bold", size: 12.0)
+        searchPlaceTextField.autoCompleteAttributes = attributes
+    }
+    
+    private func handleTextFieldInterfaces(){
+        searchPlaceTextField.onTextChange =
+            { [weak self] text in
+                self!.autoCompleteTextFromQuery( text ) {
+                    results in
+                    
+                    //Initialize the dictionary
+                    self!.places = [:]
+                    for result in results {
+                        self!.places[result.attributedFullText.string] = result.placeID
+                    }
+                    // assign only the keys of the dictionnary to be displayed as the autocompletestrings
+                    self!.searchPlaceTextField.autoCompleteStrings = [String](self!.places.keys)
+                }
+        }
+        
+        searchPlaceTextField.onSelect =
+            { [weak self] text, indexpath in
+                self?.searchPlaceTextField.text = text
+        }
+    }
+    
+    func autoCompleteTextFromQuery (searchText: String, callback: ([GMSAutocompletePrediction]) -> ()) {
+        if searchText != "" {
+            let autoCompleteFilter = GMSAutocompleteFilter()
+            autoCompleteFilter.type = GMSPlacesAutocompleteTypeFilter.City
+            
+            self.placesClient.autocompleteQuery( searchText, bounds: nil, filter: autoCompleteFilter, callback: { (results, error: NSError?) -> Void in
+                if let error = error {
+                    print("Autocomplete error \(error)")
+                }
+                callback( (results as? [GMSAutocompletePrediction])! )
+            })
+        }
+    }
+    
+    func updatePinPropertiesFromPlaceID (placeID: String, callback: (Pin) -> ()) {
+        var city: String!
+        var country: String!
+        var coordinates: PFGeoPoint!
+        
+        self.placesClient.lookUpPlaceID(placeID, callback:
+            { (place, error) -> Void in
+                if error != nil {
+                    print("lookup place id query error: \(error!.localizedDescription)")
+                    return
+                }
+                if let p = place {
+                    var resultStringArray = p.formattedAddress.componentsSeparatedByString(", ")
+                    
+                    city = p.name
+                    
+                    if resultStringArray.count > 2 {
+                        country = resultStringArray[2]
+                    }
+                    else {
+                        country = resultStringArray[1]
+                    }
+                    coordinates = PFGeoPoint(latitude: p.coordinate.latitude, longitude: p.coordinate.longitude)
+                }
+                else {
+                    print("No place details for \(placeID)")
+                }
+                callback( Pin(userId: (currentUser()?.id)!, isVisited: false, city: city, country: country, coordinates: coordinates, fromDate: self.fromDate , toDate: self.toDate ) )
+        })
+    }
+
     
     // MARK: IBActions
     

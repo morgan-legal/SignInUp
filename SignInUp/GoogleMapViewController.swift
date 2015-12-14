@@ -23,6 +23,11 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        createMapNavigationBar()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         fetchPlacesToVisit({
             placesVisited in
@@ -40,11 +45,7 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
             }
         })
         
-        createMapNavigationBar()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        // User Location
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
@@ -153,13 +154,13 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     // MARK: Add Markers to the Map
     
-    func displayMarkerFromLocationCoordinates( location: Pin ) {
+    func displayMarkerFromLocationCoordinates( place: Pin ) {
         var markerColor = UIColor()
-        let position = CLLocationCoordinate2DMake(location.coordinates.latitude, location.coordinates.longitude)
+        let position = CLLocationCoordinate2DMake(place.coordinates.latitude, place.coordinates.longitude)
         let marker = GMSMarker(position: position)
-        marker.title = location.city
+        marker.title = place.city + ", " + place.country
         
-        if location.isVisited == true {
+        if place.isVisited == true {
             markerColor = UIColor.greenColor()
         }
         else {

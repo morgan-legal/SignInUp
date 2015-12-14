@@ -11,9 +11,6 @@
 		580AE15A1BDFE024002468B4 /* PinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AE1591BDFE024002468B4 /* PinCell.swift */; };
 		580AE15E1BE0E133002468B4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 580AE15D1BE0E133002468B4 /* Podfile */; };
 		5847EEA61BDE338A007AF2FD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847EEA51BDE338A007AF2FD /* User.swift */; };
-		584D6FFB1BE3EE3400472DE8 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D6FFA1BE3EE3400472DE8 /* CustomSearchController.swift */; };
-		584D6FFD1BE3EE6000472DE8 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D6FFC1BE3EE6000472DE8 /* CustomSearchBar.swift */; };
-		585717291BE22C12001DE6F6 /* SearchPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585717281BE22C12001DE6F6 /* SearchPlaceTableViewController.swift */; };
 		587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */; };
 		58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */; };
 		58924DF11BD8E4FE001A9FF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58924DF01BD8E4FE001A9FF6 /* MainViewController.swift */; };
@@ -72,9 +69,6 @@
 		580AE1591BDFE024002468B4 /* PinCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinCell.swift; sourceTree = "<group>"; };
 		580AE15D1BE0E133002468B4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5847EEA51BDE338A007AF2FD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		584D6FFA1BE3EE3400472DE8 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
-		584D6FFC1BE3EE6000472DE8 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
-		585717281BE22C12001DE6F6 /* SearchPlaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlaceTableViewController.swift; sourceTree = "<group>"; };
 		587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
 		58924DEB1BD8E4FE001A9FF6 /* SignInUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58924DEE1BD8E4FE001A9FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,9 +260,6 @@
 				58E38F2C1C1B1D9C00D6378C /* Login */,
 				58924E481BD902CD001A9FF6 /* ProfileViewController.swift */,
 				587F04431BE0FBA100D232C0 /* GoogleMapViewController.swift */,
-				585717281BE22C12001DE6F6 /* SearchPlaceTableViewController.swift */,
-				584D6FFA1BE3EE3400472DE8 /* CustomSearchController.swift */,
-				584D6FFC1BE3EE6000472DE8 /* CustomSearchBar.swift */,
 				58CBF6D51BE21C8A008D342A /* PlaceVisitedViewController.swift */,
 				58DE29BD1C15F55800BCB016 /* PlaceToVisitViewController.swift */,
 				58E38F2D1C1B1DDE00D6378C /* CommunityViewController.swift */,
@@ -498,17 +489,14 @@
 				58924DEF1BD8E4FE001A9FF6 /* AppDelegate.swift in Sources */,
 				580AE1581BDF7FCF002468B4 /* Pin.swift in Sources */,
 				58924DF71BD8E4FE001A9FF6 /* SignInUp.xcdatamodeld in Sources */,
-				585717291BE22C12001DE6F6 /* SearchPlaceTableViewController.swift in Sources */,
 				58DE29BE1C15F55800BCB016 /* PlaceToVisitViewController.swift in Sources */,
 				58A334681C1881A60002351A /* AutoCompleteTextField.swift in Sources */,
 				58924E471BD902B5001A9FF6 /* LogInViewController.swift in Sources */,
 				58CBF6D61BE21C8A008D342A /* PlaceVisitedViewController.swift in Sources */,
 				587F04441BE0FBA100D232C0 /* GoogleMapViewController.swift in Sources */,
 				58924E451BD8EADA001A9FF6 /* CreateAccountViewController.swift in Sources */,
-				584D6FFB1BE3EE3400472DE8 /* CustomSearchController.swift in Sources */,
 				58924E4B1BD90D56001A9FF6 /* ResetPasswordViewController.swift in Sources */,
 				5847EEA61BDE338A007AF2FD /* User.swift in Sources */,
-				584D6FFD1BE3EE6000472DE8 /* CustomSearchBar.swift in Sources */,
 				58E38F301C1B33B800D6378C /* NavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

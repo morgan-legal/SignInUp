@@ -30,13 +30,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             self.placesVisitedCollectionView.reloadData()
         })*/
         
-        fetchPlacesToVisit({
+        fetchPlacesVisited({
             placesVisited in
             self.placesVisited = placesVisited
             self.placesVisitedCollectionView.reloadData()
         })
         
-        fetchPlacesVisited({
+        fetchPlacesToVisit({
             placesToVisit in
             self.placesToVisit = placesToVisit
             self.placesToVisitCollectionView.reloadData()
