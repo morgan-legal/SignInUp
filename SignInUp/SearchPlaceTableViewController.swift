@@ -308,7 +308,7 @@ class SearchPlaceTableViewController: UIViewController, UITableViewDelegate, UIT
                 else {
                     print("No place details for \(placeID)")
                 }
-                callback( Pin(userId: (currentUser()?.id)!, isVisited: true, city: city, country: country, coordinates: coordinates) )
+              //  callback( Pin(userId: (currentUser()?.id)!, isVisited: true, city: city, country: country, coordinates: coordinates) )
         })
     }
 

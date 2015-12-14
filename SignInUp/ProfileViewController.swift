@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             self.placesVisitedCollectionView.reloadData()
         })*/
         
-     /*   fetchPlacesToVisit({
+        fetchPlacesToVisit({
             placesVisited in
             self.placesVisited = placesVisited
             self.placesVisitedCollectionView.reloadData()
@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             placesToVisit in
             self.placesToVisit = placesToVisit
             self.placesToVisitCollectionView.reloadData()
-        })*/
+        })
         
         createProfileNavigationBar()
     }

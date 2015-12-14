@@ -11,40 +11,31 @@ import UIKit
 class PlaceToVisitViewController: UIViewController {
 
     @IBOutlet weak var searchPlaceTextField: AutoCompleteTextField!
-    let placesClient = GMSPlacesClient()
-    let filter = GMSAutocompleteFilter()
-    var placesIDs: [String] = []
-    var searchResults: [GMSAutocompletePrediction] = []
-    var locations = [String]()
+    @IBOutlet weak var toDateTextField: UITextField!
+    @IBOutlet weak var fromDateTextField: UITextField!
     
-    var placeToVisit: Pin!
+    var isFromDate:Bool!
+    let dateFormatter = NSDateFormatter()
+    var toDate: NSDate!
+    var fromDate: NSDate!
+    let placesClient = GMSPlacesClient()
+    var places = [String: String]() // Dictionary -> KEY: Place Name, VALUE: Place ID
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        /*let leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "backButtonPressed:")
-        navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
-        
-        let rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "addButtonPressed:")
-        navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)*/
-        configureTextField()
-        handleTextFieldInterfaces()
         createPlaceToVisitNavigationBar()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        filter.type = GMSPlacesAutocompleteTypeFilter.City
-        
         configureTextField()
         handleTextFieldInterfaces()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -85,12 +76,49 @@ class PlaceToVisitViewController: UIViewController {
     }
     
     func addButtonPressed(sender: UIBarButtonItem) {
-       // savePin(placeVisited)
-        
-        // Display map view controller
+        updatePinPropertiesFromPlaceID( self.places[self.searchPlaceTextField.text!]! ) {
+            place in
+            savePin( place )
+        }
+        //self.dismissViewControllerAnimated(true, completion: nil)        // Display map view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let googleMapVC = storyboard.instantiateViewControllerWithIdentifier("GoogleMaps")
         self.presentViewController(googleMapVC, animated: true, completion: nil)
+    }
+    
+    // MARK: DatePickers
+
+    @IBAction func datePickerField(sender: UITextField) {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        sender.inputView = datePicker
+        
+        if sender == self.toDateTextField {
+            isFromDate = true
+        }
+        else {
+            isFromDate = false
+        }
+        datePicker.addTarget(self, action: "handleDatePickers:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func handleDatePickers(sender: UIDatePicker) {
+        dateFormatter.dateStyle = .LongStyle
+        if isFromDate == true {
+            toDateTextField.text = dateFormatter.stringFromDate(sender.date)
+            self.toDate = sender.date
+        }
+        else{
+            fromDateTextField.text = dateFormatter.stringFromDate(sender.date)
+            self.fromDate = sender.date
+        }
+    }
+    
+    // MARK: When user click oustide the UITextField
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.fromDateTextField.resignFirstResponder()
+        self.toDateTextField.resignFirstResponder()
     }
     
     // MARK: AutoCompleteTextFields
@@ -114,11 +142,14 @@ class PlaceToVisitViewController: UIViewController {
         { [weak self] text in
             self!.autoCompleteTextFromQuery( text ) {
                 results in
-                var places = [String]()
+
+                //Initialize the dictionary
+                self!.places = [:]
                 for result in results {
-                    places.append(result.attributedFullText.string)
+                    self!.places[result.attributedFullText.string] = result.placeID
                 }
-                self!.searchPlaceTextField.autoCompleteStrings = places
+                // assign only the keys of the dictionnary to be displayed as the autocompletestrings
+                self!.searchPlaceTextField.autoCompleteStrings = [String](self!.places.keys)
             }
         }
         
@@ -131,20 +162,47 @@ class PlaceToVisitViewController: UIViewController {
 
     func autoCompleteTextFromQuery (searchText: String, callback: ([GMSAutocompletePrediction]) -> ()) {
         if searchText != "" {
-            self.placesClient.autocompleteQuery( searchText, bounds: nil, filter: filter, callback: { (results, error: NSError?) -> Void in
-                
+            let autoCompleteFilter = GMSAutocompleteFilter()
+            autoCompleteFilter.type = GMSPlacesAutocompleteTypeFilter.City
+            
+            self.placesClient.autocompleteQuery( searchText, bounds: nil, filter: autoCompleteFilter, callback: { (results, error: NSError?) -> Void in
                 if let error = error {
                     print("Autocomplete error \(error)")
                 }
-                
-                let searchResults = (results as? [GMSAutocompletePrediction])!
-                
-                for result in (results as? [GMSAutocompletePrediction])! {
-                    self.placesIDs.append(result.placeID)
-                }
-                
-                callback( searchResults )
+                callback( (results as? [GMSAutocompletePrediction])! )
             })
         }
     }
+    
+    func updatePinPropertiesFromPlaceID (placeID: String, callback: (Pin) -> ()) {
+        var city: String!
+        var country: String!
+        var coordinates: PFGeoPoint!
+        
+        self.placesClient.lookUpPlaceID(placeID, callback:
+            { (place, error) -> Void in
+                if error != nil {
+                    print("lookup place id query error: \(error!.localizedDescription)")
+                    return
+                }
+                if let p = place {
+                    var resultStringArray = p.formattedAddress.componentsSeparatedByString(", ")
+                    
+                    city = p.name
+                    
+                    if resultStringArray.count > 2 {
+                        country = resultStringArray[2]
+                    }
+                    else {
+                        country = resultStringArray[1]
+                    }
+                    coordinates = PFGeoPoint(latitude: p.coordinate.latitude, longitude: p.coordinate.longitude)
+                }
+                else {
+                    print("No place details for \(placeID)")
+                }
+                callback( Pin(userId: (currentUser()?.id)!, isVisited: false, city: city, country: country, coordinates: coordinates, fromDate: self.fromDate , toDate: self.toDate ) )
+        })
+    }
+
 }

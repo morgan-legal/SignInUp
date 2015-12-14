@@ -14,11 +14,14 @@ class PictureCell: UICollectionViewCell {
 
 class PlaceVisitedViewController: UIViewController{
     
-    @IBOutlet weak var placeVisitedLabel: UILabel!
     var placeVisited: Pin!
     
-    @IBOutlet weak var fromDatePicker: UIDatePicker!
-    @IBOutlet weak var toDatePicker: UIDatePicker!
+    @IBOutlet weak var placeVisitedTextField: UITextField!
+
+    //Dates 
+    @IBOutlet weak var fromDateTextField: UITextField!
+    @IBOutlet weak var toDateTextField: UITextField!
+    var isFromDate:Bool!
     
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
@@ -80,11 +83,45 @@ class PlaceVisitedViewController: UIViewController{
 
     func addButtonPressed(sender: UIBarButtonItem) {
         savePin(placeVisited)
+        self.dismissViewControllerAnimated(true, completion: nil)
         
-        // Display map view controller
+        /*// Display map view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let googleMapVC = storyboard.instantiateViewControllerWithIdentifier("GoogleMaps")
-        self.presentViewController(googleMapVC, animated: true, completion: nil)
+        self.presentViewController(googleMapVC, animated: true, completion: nil)*/
+    }
+    
+    // MARK: DatePicker TextFields
+    
+    @IBAction func datePickerField(sender: UITextField) {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePickerMode.Date
+        sender.inputView = datePicker
+        
+        if sender == self.toDateTextField {
+            isFromDate = true
+        }
+        else {
+            isFromDate = false
+        }
+        
+        datePicker.addTarget(self, action: "handlePlaceVisitedDatePickers:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    func handlePlaceVisitedDatePickers(sender: UIDatePicker) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .LongStyle
+        //dateFormatter.dateFormat = "yyyy-MM-dd"
+        if isFromDate == true {
+            toDateTextField.text = dateFormatter.stringFromDate(sender.date)
+        }
+        else{
+            fromDateTextField.text = dateFormatter.stringFromDate(sender.date)
+        }
+    }
+    // When user click oustide the UITextField
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.fromDateTextField.resignFirstResponder()
+        self.toDateTextField.resignFirstResponder()
     }
     
     // MARK: IBActions

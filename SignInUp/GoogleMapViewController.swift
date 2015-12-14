@@ -24,7 +24,7 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-     /*   fetchPlacesToVisit({
+        fetchPlacesToVisit({
             placesVisited in
             self.placesVisited = placesVisited
             for place in placesVisited{
@@ -38,7 +38,7 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
             for place in placesToVisit{
                 self.displayMarkerFromLocationCoordinates(place)
             }
-        })*/
+        })
         
         createMapNavigationBar()
     }

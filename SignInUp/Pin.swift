@@ -15,6 +15,8 @@ struct Pin {
     let city: String
     let country: String
     let coordinates: PFGeoPoint
+    let fromDate: NSDate
+    let toDate: NSDate
 }
 
 // MARK: Saves the places the User have visited in the database.
@@ -27,6 +29,8 @@ func savePin(pin: Pin)
     pinObject.setObject(pin.city, forKey: "city")
     pinObject.setObject(pin.country, forKey: "country")
     pinObject.setObject(pin.coordinates, forKey: "coordinates")
+    pinObject.setObject(pin.fromDate, forKey: "fromDate")
+    pinObject.setObject(pin.toDate, forKey: "toDate")
     pinObject.saveInBackgroundWithBlock(nil)
 }
 
@@ -40,13 +44,13 @@ func getAllPins(callback: ([Pin]) -> ())
         
         for object in objects!
         {
-            pins.append(Pin(userId: object["userId"] as! String, isVisited: object["isVisited"] as! Bool, city: object["city"] as! String, country: object["country"] as! String, coordinates: object["coordinates"] as! PFGeoPoint))
+            pins.append(Pin(userId: object["userId"] as! String, isVisited: object["isVisited"] as! Bool, city: object["city"] as! String, country: object["country"] as! String, coordinates: object["coordinates"] as! PFGeoPoint, fromDate: object["fromDate"] as! NSDate, toDate: object["toDate"] as! NSDate))
         }
         callback(pins)
     })
 }
 
-// MARK:
+// MARK: Fetch all the places visited
 
 func fetchPlacesVisited(callback: ([Pin]) -> ())
 {
@@ -61,7 +65,7 @@ func fetchPlacesVisited(callback: ([Pin]) -> ())
         {
             if object["isVisited"] as! Bool == true
             {
-                placesVisited.append(Pin(userId: object["userId"] as! String, isVisited: object["isVisited"] as! Bool, city: object["city"] as! String, country: object["country"] as! String, coordinates: object["coordinates"] as! PFGeoPoint))
+                placesVisited.append(Pin(userId: object["userId"] as! String, isVisited: object["isVisited"] as! Bool, city: object["city"] as! String, country: object["country"] as! String, coordinates: object["coordinates"] as! PFGeoPoint, fromDate: object["fromDate"] as! NSDate, toDate: object["toDate"] as! NSDate))
             }
                 //placesVisited.filter({return $0.isVisited == true})
         }
@@ -70,7 +74,7 @@ func fetchPlacesVisited(callback: ([Pin]) -> ())
     })
 }
 
-// MARK:
+// MARK: Fecth all the places to visit
 
 func fetchPlacesToVisit(callback: ([Pin]) -> ())
 {
@@ -83,7 +87,7 @@ func fetchPlacesToVisit(callback: ([Pin]) -> ())
         {
             if object["isVisited"] as! Bool == false
             {
-                placesToVisit.append(Pin(userId: object["userId"] as! String, isVisited: object["isVisited"] as! Bool, city: object["city"] as! String, country: object["country"] as! String, coordinates: object["coordinates"] as! PFGeoPoint))
+                placesToVisit.append(Pin(userId: object["userId"] as! String, isVisited: object["isVisited"] as! Bool, city: object["city"] as! String, country: object["country"] as! String, coordinates: object["coordinates"] as! PFGeoPoint, fromDate: object["fromDate"] as! NSDate, toDate: object["toDate"] as! NSDate))
             }
         }
         // Sends back the array of data
