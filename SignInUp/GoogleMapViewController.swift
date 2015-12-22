@@ -10,9 +10,7 @@ import UIKit
 import CoreLocation
 
 class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
-    
-    var placesToVisit: [Pin] = []
-    var placesVisited: [Pin] = []
+
     var googleMapView: GMSMapView!
     var placesClient: GMSPlacesClient?
     
@@ -24,27 +22,27 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         createMapNavigationBar()
+        reloadMarkers()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchPlacesToVisit({
-            placesVisited in
-            self.placesVisited = placesVisited
-            for place in placesVisited{
-                self.displayMarkerFromLocationCoordinates(place)
-            }
-        })
         
-        fetchPlacesVisited({
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didDismissViewController:", name: "didDismissVC", object: nil)
+        
+        getPlacesToVisit({
             placesToVisit in
-            self.placesToVisit = placesToVisit
-            for place in placesToVisit{
-                self.displayMarkerFromLocationCoordinates(place)
+            for placeToVisit in placesToVisit{
+                self.addPlaceToVisitMarker(placeToVisit)
             }
         })
-        
+        getPlacesVisited({
+            placesVisited in
+            for placeVisited in placesVisited {
+                self.addPlaceVisitedMarker(placeVisited)
+            }
+        })
+
         // User Location
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,9 +59,9 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
         // Enable user location
         // The myLocation attribute of the mapView may be null
         if let mylocation = googleMapView.myLocation {
-            NSLog("User's location: %@", mylocation)
+            print("User's location: %@", mylocation)
         } else {
-            NSLog("User's location is unknown")
+            print("User's location is unknown")
         }
         self.googleMapView.delegate = self
         placesClient = GMSPlacesClient()
@@ -74,6 +72,24 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func didDismissViewController(notification: NSNotification) {
+        reloadMarkers()
+    }
+    
+    func reloadMarkers() {
+        // remove all markers
+        if self.googleMapView != nil {
+            self.googleMapView.clear()
+        }
+        
+        for placeVisited in placesVisited {
+            self.addPlaceVisitedMarker(placeVisited)
+        }
+        for placeToVisit in placesToVisit{
+            self.addPlaceToVisitMarker(placeToVisit)
+        }
     }
     
     // MARK: Helper functions
@@ -87,7 +103,7 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         //self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barTintColor = UIColorFromRGB(0x326094)
-        self.navigationController?.navigationBar.topItem?.title = "i am Hemingway"
+        self.navigationController?.navigationBar.topItem?.title = "Blink"
         
         var placeVisitedImage = UIImage(named: "placeVisited-Small")
         placeVisitedImage = placeVisitedImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -154,20 +170,20 @@ class GoogleMapViewController: UIViewController, CLLocationManagerDelegate, GMSM
     
     // MARK: Add Markers to the Map
     
-    func displayMarkerFromLocationCoordinates( place: Pin ) {
-        var markerColor = UIColor()
-        let position = CLLocationCoordinate2DMake(place.coordinates.latitude, place.coordinates.longitude)
-        let marker = GMSMarker(position: position)
-        marker.title = place.city + ", " + place.country
-        
-        if place.isVisited == true {
-            markerColor = UIColor.greenColor()
-        }
-        else {
-            markerColor = UIColor.redColor()
-        }
-        marker.icon = GMSMarker.markerImageWithColor(markerColor)
+    func addPlaceVisitedMarker( placeVisited: PlaceVisited ) {
+        let marker = GMSMarker(position: placeVisited.coordinate)
+        marker.title = placeVisited.city + ", " + placeVisited.country
+        marker.icon = GMSMarker.markerImageWithColor( UIColor.greenColor() )
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.map = googleMapView
     }
+    
+    func addPlaceToVisitMarker( placeToVisit: PlaceToVisit ) {
+        let marker = GMSMarker(position: placeToVisit.coordinate)
+        marker.title = placeToVisit.city + ", " + placeToVisit.country
+        marker.icon = GMSMarker.markerImageWithColor( UIColor.redColor() )
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.map = googleMapView
+    }
+
 }

@@ -3,6 +3,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <Parse/PFObject+Subclass.h>
 #import <Bolts/Bolts.h>
 #import <GoogleMaps/GoogleMaps.h>
-//#import <GoogleMapsM4B/GoogleMaps.h>
+#import <QBImagePickerController/QBImagePickerController.h>

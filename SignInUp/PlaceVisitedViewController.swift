@@ -7,42 +7,66 @@
 //
 
 import UIKit
+import Photos
 
-class PictureCell: UICollectionViewCell {
+class PictureCell: UICollectionViewCell{
     @IBOutlet weak var pictureImageView: UIImageView!
 }
 
-class PlaceVisitedViewController: UIViewController{
-    
-    //var placeVisited: Pin!
+class PlaceVisitedViewController: UIViewController, QBImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
+
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var commentsTextView: UITextView!
     
     @IBOutlet weak var searchPlaceTextField: AutoCompleteTextField!
     @IBOutlet weak var fromDateTextField: UITextField!
     @IBOutlet weak var toDateTextField: UITextField!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
+    
+    let imagePickerController = QBImagePickerController()
     var isFromDate:Bool!
     let dateFormatter = NSDateFormatter()
     var toDate: NSDate!
     var fromDate: NSDate!
-    let placesClient = GMSPlacesClient()
+
     var places = [String: String]() // Dictionary -> KEY: Place Name, VALUE: Place ID
-    
+    let imageManager = PHImageManager()
+    var imageCollection = [UIImage]()
+    var imagesIds = [String]()
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         createPlaceVisitedNavigationBar()
+        self.registerForKeyboardNotifications()
+   }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.deregisterFromKeyboardNotifications()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureTextField()
+        self.handleTextFieldInterfaces()
+        
+        self.imagePickerController.delegate = self
+        self.imagePickerController.allowsMultipleSelection = true
+        self.imagePickerController.maximumNumberOfSelection = 6
+        self.imagePickerController.showsNumberOfSelectedAssets = true
+        
+        self.picturesCollectionView.delegate = self
+        self.picturesCollectionView.dataSource = self
+        
+        self.view.addGestureRecognizer( UITapGestureRecognizer(target: self, action: "tap:") )
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
+
     // MARK: Helper function
     
     func createPlaceVisitedNavigationBar() {
@@ -72,24 +96,32 @@ class PlaceVisitedViewController: UIViewController{
         )
     }
     
-    // MARK: Actions
+    // MARK: NavigationBar Buttons
     
     func cancelButtonPressed(sender: UIBarButtonItem) {
-        //self.navigationController?.popViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     func addButtonPressed(sender: UIBarButtonItem) {
-        updatePinPropertiesFromPlaceID( self.places[self.searchPlaceTextField.text!]! ) {
+
+        getGMSPlaceFromPlaceId( self.places[self.searchPlaceTextField.text!]! ) {
             place in
-            savePin( place )
+            let newPlaceVisited =
+                PlaceVisited (
+                userId: (currentUser()?.id)!,
+                city: place.name,
+                country: getCountryFromFormattedAddress(place),
+                coordinate: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude),
+                fromDate: self.fromDate,
+                toDate: self.toDate,
+                imagesIds: self.imagesIds,
+                comments: self.commentsTextView.text)
+            
+            placesVisited.append( newPlaceVisited )
+            savePlaceVisited ( newPlaceVisited )
+            NSNotificationCenter.defaultCenter().postNotificationName("didDismissVC", object: nil)
         }
-        //self.dismissViewControllerAnimated(true, completion: nil)
-        
-        // Display map view controller
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let googleMapVC = storyboard.instantiateViewControllerWithIdentifier("GoogleMaps")
-        self.presentViewController(googleMapVC, animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: DatePicker TextFields
@@ -99,15 +131,16 @@ class PlaceVisitedViewController: UIViewController{
         datePicker.datePickerMode = UIDatePickerMode.Date
         sender.inputView = datePicker
         
-        if sender == self.toDateTextField {
-            isFromDate = false
+        if sender == self.fromDateTextField {
+            isFromDate = true
         }
         else {
-            isFromDate = true
+            isFromDate = false
         }
         
         datePicker.addTarget(self, action: "handlePlaceVisitedDatePickers:", forControlEvents: UIControlEvents.ValueChanged)
     }
+    
     func handlePlaceVisitedDatePickers(sender: UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .LongStyle
@@ -121,12 +154,22 @@ class PlaceVisitedViewController: UIViewController{
         }
     }
     
-    // MARK: When user click oustide the UITextField
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.fromDateTextField.resignFirstResponder()
-        self.toDateTextField.resignFirstResponder()
+    // MARK: When user click oustide the the active View
+
+    func tap(gesture: UITapGestureRecognizer) {
+        if self.fromDateTextField.isFirstResponder() {
+            self.fromDateTextField.resignFirstResponder()
+        }
+        else if self.toDateTextField.isFirstResponder() {
+            self.toDateTextField.resignFirstResponder()
+        }
+        else if self.commentsTextView.isFirstResponder() {
+            self.commentsTextView.resignFirstResponder()
+        }
+        else {
+            self.searchPlaceTextField.resignFirstResponder()
+        }
     }
-    
     
     // MARK: AutoCompleteTextFields
     
@@ -147,7 +190,7 @@ class PlaceVisitedViewController: UIViewController{
     private func handleTextFieldInterfaces(){
         searchPlaceTextField.onTextChange =
             { [weak self] text in
-                self!.autoCompleteTextFromQuery( text ) {
+                getAutoCompleteTextFromQuery( text ) {
                     results in
                     
                     //Initialize the dictionary
@@ -166,58 +209,109 @@ class PlaceVisitedViewController: UIViewController{
         }
     }
     
-    func autoCompleteTextFromQuery (searchText: String, callback: ([GMSAutocompletePrediction]) -> ()) {
-        if searchText != "" {
-            let autoCompleteFilter = GMSAutocompleteFilter()
-            autoCompleteFilter.type = GMSPlacesAutocompleteTypeFilter.City
-            
-            self.placesClient.autocompleteQuery( searchText, bounds: nil, filter: autoCompleteFilter, callback: { (results, error: NSError?) -> Void in
-                if let error = error {
-                    print("Autocomplete error \(error)")
-                }
-                callback( (results as? [GMSAutocompletePrediction])! )
-            })
-        }
-    }
-    
-    func updatePinPropertiesFromPlaceID (placeID: String, callback: (Pin) -> ()) {
-        var city: String!
-        var country: String!
-        var coordinates: PFGeoPoint!
-        
-        self.placesClient.lookUpPlaceID(placeID, callback:
-            { (place, error) -> Void in
-                if error != nil {
-                    print("lookup place id query error: \(error!.localizedDescription)")
-                    return
-                }
-                if let p = place {
-                    var resultStringArray = p.formattedAddress.componentsSeparatedByString(", ")
-                    
-                    city = p.name
-                    
-                    if resultStringArray.count > 2 {
-                        country = resultStringArray[2]
-                    }
-                    else {
-                        country = resultStringArray[1]
-                    }
-                    coordinates = PFGeoPoint(latitude: p.coordinate.latitude, longitude: p.coordinate.longitude)
-                }
-                else {
-                    print("No place details for \(placeID)")
-                }
-                callback( Pin(userId: (currentUser()?.id)!, isVisited: false, city: city, country: country, coordinates: coordinates, fromDate: self.fromDate , toDate: self.toDate ) )
-        })
-    }
-
-    
     // MARK: IBActions
     
     @IBAction func addPicturesButtonPressed(sender: UIButton) {
+        presentViewController(imagePickerController, animated: true, completion: nil)
+    }
+
+    // MARK: QBImagePickerControllerDelegate Methods
+    
+    func qb_imagePickerController(imagePickerController: QBImagePickerController!, didFinishPickingAssets assets: [AnyObject]!) {
+        let options = PHImageRequestOptions()
+        options.synchronous = true
+        imageCollection.removeAll()
+        for asset in assets {
+            self.imageManager.requestImageForAsset(asset as! PHAsset, targetSize: CGSizeMake(60, 60), contentMode: .AspectFill, options: options, resultHandler: { (image, info) -> Void in
+                self.imageCollection.append(image!)
+                //Creates a new object for the current picture, returns its object ID and saves the ID in the imagesIds array
+                savePlaceVisitedImages( NSData(data: UIImagePNGRepresentation(image!)!) ){
+                    objectId in
+                    self.imagesIds.append( objectId)
+                    print(self.imagesIds)
+                    }
+            })
+        }
+        self.picturesCollectionView.reloadData()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func deletePicturesButtonPressed(sender: UIButton) {
+    func qb_imagePickerControllerDidCancel(imagePickerController: QBImagePickerController!) {
+        self.picturesCollectionView.reloadData()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    // MARK: - UICollectionViewDataSource
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.imageCollection.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell: PictureCell = collectionView.dequeueReusableCellWithReuseIdentifier("pictureCell", forIndexPath: indexPath) as! PictureCell
+        cell.pictureImageView.image = self.imageCollection[indexPath.row] as UIImage
+        return cell
+    }
+
+    // Call this method somewhere in your view controller setup code.
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    // Called when the UIKeyboardDidShowNotification is sent.
+    func keyboardWasShown(notification: NSNotification) {
+
+        print("Keyboard was shown notification.")
+
+        
+        // keyboard frame is in window coordinates
+        let userInfo: NSDictionary  = notification.userInfo!
+        let keyboardSize = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey)?.CGRectValue.size
+
+        let contentInsets: UIEdgeInsets  = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height + 50, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        
+        print("keyboard size height: \(keyboardSize!.height)")
+        
+        
+        // If active text field is hidden by keyboard, scroll it so it's visible
+        // Your app might not need or want this behavior.
+        var aRect: CGRect = self.view.frame
+        print("frame rect: \(aRect)")
+        
+        aRect.size.height -= keyboardSize!.height
+        
+        print("frame rect height: \(aRect.size.height)")
+        
+        print("textView origin X, Y: \(self.commentsTextView!.frame.origin)")
+        
+        if self.commentsTextView.isFirstResponder() {
+        //if ( !CGRectContainsPoint(aRect, self.commentsTextView!.frame.origin) ) {
+            let scrollPoint:CGPoint = CGPointMake(0.0, self.commentsTextView!.frame.origin.y - keyboardSize!.height)
+            print("scrollpoint: \(scrollPoint)")
+            self.scrollView.setContentOffset(scrollPoint, animated: true)
+            //self.scrollView.scrollRectToVisible(self.commentsTextView.frame, animated: true)
+      //  }
+        }
+        
+    }
+    
+    // Called when the UIKeyboardWillHideNotification is sent
+    func keyboardWillBeHidden(notification: NSNotification){
+        let contentInsets = UIEdgeInsetsZero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
 }

@@ -115,9 +115,10 @@ class LogInViewController: UIViewController {
     func processSignIn()
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mapVC = storyboard.instantiateViewControllerWithIdentifier("GMSNavController")
+        let tabBarController = storyboard.instantiateViewControllerWithIdentifier("tabBarController") as! UITabBarController
+        tabBarController.selectedIndex = 1
         //self.navigationController!.pushViewController(mapVC, animated: true)
-        self.presentViewController(mapVC, animated: true, completion: nil)
+        self.presentViewController(tabBarController, animated: true, completion: nil)
     }
     
     func showAlert (title: String, message: String)

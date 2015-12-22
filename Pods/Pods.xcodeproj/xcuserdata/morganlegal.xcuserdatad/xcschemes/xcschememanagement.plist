@@ -9,10 +9,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QBImagePickerController-QBImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>QBImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1469924FC52F60B0068FA24EEFCB3EFC</key>
+		<key>28F2F7E7D99C48614A42019218721362</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>754B2608EC0352C8AFF19EEEF748BA45</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3145EED881F1E542D61530F7ABD59D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

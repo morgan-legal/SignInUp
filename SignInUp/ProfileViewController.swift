@@ -8,6 +8,14 @@
 
 import UIKit
 
+class PinCell: UICollectionViewCell {
+    @IBOutlet weak var placeVisitedImageView: UIImageView!
+    @IBOutlet weak var placeVisitedLabel: UILabel!
+    
+    @IBOutlet weak var placeToVisitImageView: UIImageView!
+    @IBOutlet weak var placeToVisitLabel: UILabel!    
+}
+
 class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -17,31 +25,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     @IBOutlet weak var placesVisitedCollectionView: UICollectionView!
     @IBOutlet weak var placesToVisitCollectionView: UICollectionView!
 
-    var pins: [Pin] = []
-    var placesVisited: [Pin] = []
-    var placesToVisit: [Pin] = []
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        /*getAllPins({
-            pins in
-            self.pins = pins
-            self.placesVisitedCollectionView.reloadData()
-        })*/
-        
-        fetchPlacesVisited({
-            placesVisited in
-            self.placesVisited = placesVisited
-            self.placesVisitedCollectionView.reloadData()
-        })
-        
-        fetchPlacesToVisit({
-            placesToVisit in
-            self.placesToVisit = placesToVisit
-            self.placesToVisitCollectionView.reloadData()
-        })
-        
+
         createProfileNavigationBar()
     }
     
@@ -52,12 +39,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         self.firstNameLabel.text = currentUser()?.firstName.capitalizedString
         self.lastNameLabel.text = currentUser()?.lastName.capitalizedString
         
-        
         placesToVisitCollectionView.delegate = self
         placesVisitedCollectionView.delegate = self
         
         placesToVisitCollectionView.dataSource = self
         placesVisitedCollectionView.dataSource = self
+
+        placesToVisitCollectionView.reloadData()
+        placesVisitedCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,10 +103,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.placesToVisitCollectionView {
-            return self.placesToVisit.count
+            return placesToVisit.count
         }
         else {
-            return self.placesVisited.count
+            return placesVisited.count
         }
     }
     

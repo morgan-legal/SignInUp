@@ -19,6 +19,11 @@ struct Pin {
     let toDate: NSDate
 }
 
+struct PinPhotos {
+    let userId: String
+    let images: [NSData]
+}
+
 // MARK: Saves the places the User have visited in the database.
 
 func savePin(pin: Pin)
@@ -32,6 +37,13 @@ func savePin(pin: Pin)
     pinObject.setObject(pin.fromDate, forKey: "fromDate")
     pinObject.setObject(pin.toDate, forKey: "toDate")
     pinObject.saveInBackgroundWithBlock(nil)
+}
+
+func saveImages(pinPhotos: PinPhotos){
+    let images = PFObject(className: "Photos")
+    images.setObject(pinPhotos.userId, forKey: "userId")
+    images.setObject(pinPhotos.images, forKey: "photos")
+    images.saveInBackgroundWithBlock(nil)
 }
 
 // MARK:
