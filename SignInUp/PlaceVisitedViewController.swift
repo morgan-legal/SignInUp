@@ -60,7 +60,7 @@ class PlaceVisitedViewController: UIViewController, QBImagePickerControllerDeleg
         self.picturesCollectionView.delegate = self
         self.picturesCollectionView.dataSource = self
         
-        self.view.addGestureRecognizer( UITapGestureRecognizer(target: self, action: "tap:") )
+        //self.view.addGestureRecognizer( UITapGestureRecognizer(target: self, action: "tap:") )
     }
 
     override func didReceiveMemoryWarning() {
